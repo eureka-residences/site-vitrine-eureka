@@ -46,3 +46,42 @@ Cette application web a été conçue avec React et TypeScript, en suivant une a
 | React Router DOM | Routing entre pages |
 | CSS / Tailwind | Stylisation |
 | Unsplash | Source d'images haute qualité |
+
+
+## 🧱 Architecture des composants
+
+```plaintext
+src/
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── FeaturedResidences.tsx
+│   ├── Testimonials.tsx
+│   └── CallToAction.tsx
+├── pages/
+│   ├── HomePage.tsx
+│   └── ResidenceListPage.tsx
+├── types/
+│   └── residence.ts
+├── App.tsx
+└── main.tsx
+```
+
+
+
+## 🚀 Prochaines étapes (suggestions)
+- Intégration de données dynamiques (API - Django REST Framework)
+- Ajout de pages détaillées pour chaque résidence
+- Gestion d’authentification (connexion / inscription)
+- Formulaire de contact
+
+
+
+## 📦 Installation et lancement
+
+```sh
+git clone https://github.com/eureka-residences/site-vitrine-eureka.git
+cd real-estate-app
+npm install
+npm run dev
+```
