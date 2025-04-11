@@ -2,7 +2,7 @@
   "name": "Eureka Residences",
   "description": "A web application for managing and showcasing properties in Eureka Residences.",
   "author": "Thomas AWOUNFOUET",
-  "homepage": "https://github.com/eureka-residences/site-vitrine-eureka",
+  "homepage": "https://eureka-residences.github.io/site-vitrine-eureka",
   "private": true,
   "version": "0.0.0",
   "type": "module",
