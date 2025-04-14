@@ -137,34 +137,130 @@ const ReservationPage = () => {
           </div>
         )} */}
         {step === 1 && (
-        <div className="grid md:grid-cols-3 gap-6">
-          {roomTypes.map((room) => (
-            <div
-              key={room.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden border-2 hover:border-[#F7BF57] transition-colors cursor-pointer"
-              onClick={() => room.available > 0 && handleRoomSelect(room.id)}
-            >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={room.imageUrl} 
-                  alt={room.name} 
-                  className="w-full h-full object-cover transition-transform hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{room.name}</h3>
-                <p className="text-gray-600 mb-4">{room.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-[#F7BF57]">{room.price} F.CFA/mois</span>
-                  <span className={`px-3 py-1 rounded-full text-sm ${
-                    room.available > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                  }`}>
-                    {room.available > 0 ? `${room.available} disponible${room.available > 1 ? 's' : ''}` : 'Complet'}
+        // <div className="grid md:grid-cols-3 gap-6">
+        //   {roomTypes.map((room) => (
+        //     <div
+        //       key={room.id}
+        //       className="bg-white rounded-lg shadow-md overflow-hidden border-2 hover:border-[#F7BF57] transition-colors cursor-pointer"
+        //       onClick={() => room.available > 0 && handleRoomSelect(room.id)}
+        //     >
+        //       <div className="h-48 overflow-hidden">
+        //         <img 
+        //           src={room.imageUrl} 
+        //           alt={room.name} 
+        //           className="w-full h-full object-cover transition-transform hover:scale-105"
+        //         />
+        //       </div>
+        //       <div className="p-6">
+        //         <h3 className="text-xl font-semibold text-gray-900 mb-2">{room.name}</h3>
+        //         <p className="text-gray-600 mb-4">{room.description}</p>
+        //         <div className="flex justify-between items-center">
+        //           <span className="text-2xl font-bold text-[#F7BF57]">{room.price} F.CFA/mois</span>
+        //           <span className={`px-3 py-1 rounded-full text-sm ${
+        //             room.available > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+        //           }`}>
+        //             {room.available > 0 ? `${room.available} disponible${room.available > 1 ? 's' : ''}` : 'Complet'}
+        //           </span>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   ))}
+        // </div>
+        <div className="py-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            {roomTypes.map((room) => (
+              <div
+                key={room.id}
+                className={`
+                  bg-white rounded-xl shadow-lg overflow-hidden 
+                  transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl
+                  ${room.available > 0 ? "cursor-pointer" : "opacity-75 cursor-not-allowed"} 
+                  relative group
+                `}
+                onClick={() => room.available > 0 && handleRoomSelect(room.id)}
+                role="button"
+                aria-pressed="false"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    room.available > 0 && handleRoomSelect(room.id);
+                  }
+                }}
+              >
+                {/* Overlay au survol */}
+                {room.available > 0 && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center z-10 p-6">
+                    <span className="text-white font-medium text-lg px-6 py-3 bg-[#F7BF57] rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      Sélectionner
+                    </span>
+                  </div>
+                )}
+                
+                {/* Badge disponibilité (affiché en permanence) */}
+                <div className="absolute top-4 right-4 z-20">
+                  <span className={`
+                    px-4 py-1.5 rounded-full text-sm font-medium
+                    ${room.available > 0 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-red-500 text-white'}
+                  `}>
+                    {room.available > 0 
+                      ? `${room.available} disponible${room.available > 1 ? 's' : ''}` 
+                      : 'Complet'}
                   </span>
                 </div>
+                
+                {/* Image avec effet zoom */}
+                <div className="h-56 overflow-hidden relative">
+                  <img 
+                    src={room.imageUrl} 
+                    alt={room.name} 
+                    className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{room.name}</h3>
+                  <div className="w-16 h-1 bg-[#F7BF57] mb-4"></div>
+                  <p className="text-gray-600 mb-6 min-h-[3rem]">{room.description}</p>
+                  
+                  {/* Ajout de caractéristiques */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Wifi</span>
+                    <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Bureau</span>
+                    <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Rangements</span>
+                    {room.id === 'comfort' || room.id === 'studio' ? 
+                      <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Salle de bain privative</span> : null}
+                    {room.id === 'studio' ? 
+                      <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Kitchenette</span> : null}
+                  </div>
+                  
+                  {/* Prix avec design amélioré */}
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <span className="text-3xl font-bold text-[#F7BF57]">
+                          {room.price.toLocaleString()}
+                        </span>
+                        <span className="text-gray-600 ml-1">F.CFA</span>
+                        <span className="text-sm text-gray-500 block">par mois</span>
+                      </div>
+                      
+                      {room.available > 0 && (
+                        <div className="rounded-full bg-[#F7BF57]/10 p-3 text-[#F7BF57]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 

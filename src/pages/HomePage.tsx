@@ -198,7 +198,7 @@ export default function HomePage() {
           
           <div className="mt-10 text-center">
             <Link
-              to="/residences"
+              to="/services"
               className="inline-flex items-center text-[#F7BF57] font-medium hover:text-[#D9BEA3] transition-colors"
             >
               Découvrir tous nos services
