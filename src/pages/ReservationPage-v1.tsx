@@ -171,109 +171,86 @@ const ReservationPage = () => {
         {/* Step 2: Contact Information */}
         {step === 2 && (
           <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="studentName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nom de l'étudiant
-                </label>
-                <input
-                  type="text"
-                  id="studentName"
-                  name="studentName"
-                  placeholder="Ex: Jean Dupont"
-                  aria-describedby="studentNameHelp"
-                  required
-                  aria-required="true"
-                  value={formData.studentName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
-                />
-                <p id="studentNameHelp" className="mt-1 text-sm text-gray-500">
-                  Entrez le nom complet de l'étudiant qui occupera le logement.
-                </p>
-              </div>
-        
-              <div>
-                <label htmlFor="parentName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nom du parent ou tuteur légal
-                </label>
-                <input
-                  type="text"
-                  id="parentName"
-                  name="parentName"
-                  placeholder="Ex: Marie Dupont"
-                  aria-describedby="parentNameHelp"
-                  required
-                  value={formData.parentName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
-                />
-                <p id="parentNameHelp" className="mt-1 text-sm text-gray-500">
-                  Nous contacterons cette personne pour finaliser la réservation.
-                </p>
-              </div>
-        
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Ex: parent@exemple.com"
-                  aria-describedby="emailHelp"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
-                />
-                <p id="emailHelp" className="mt-1 text-sm text-gray-500">
-                  Vous recevrez les informations de réservation à cette adresse.
-                </p>
-              </div>
-        
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Téléphone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="Ex: +225 01 23 45 67 89"
-                  aria-describedby="phoneHelp"
-                  pattern="[0-9+\s]+"
-                  required
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
-                />
-                <p id="phoneHelp" className="mt-1 text-sm text-gray-500">
-                  Format: code pays et numéro (nous pouvons vous appeler pour confirmer les détails).
-                </p>
-              </div>
-        
-              <div className="flex justify-between pt-4">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-                >
-                  Retour
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-[#F7BF57] text-white rounded-md hover:bg-[#D9BEA3] transition-colors"
-                  aria-label="Soumettre la pré-réservation"
-                >
-                  Valider la pré-réservation
-                </button>
-              </div>
-            </form>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="studentName" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nom de l'étudiant
+                  </label>
+                  <input
+                    type="text"
+                    id="studentName"
+                    name="studentName"
+                    required
+                    value={formData.studentName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="parentName" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nom du parent
+                  </label>
+                  <input
+                    type="text"
+                    id="parentName"
+                    name="parentName"
+                    required
+                    value={formData.parentName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Téléphone
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
+                  />
+                </div>
+
+                <div className="flex justify-between">
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                  >
+                    Retour
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-[#F7BF57] text-white rounded-md hover:bg-[#D9BEA3] transition-colors"
+                  >
+                    Valider la pré-réservation
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
         )}
 
         {/* Step 3: Confirmation */}

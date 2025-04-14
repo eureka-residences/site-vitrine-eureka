@@ -25,6 +25,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-600 hover:text-[#D9BEA3]">Accueil</Link>
             <Link to="/residences" className="text-gray-600 hover:text-[#D9BEA3]">Nos Résidences</Link>
+            <Link to="/services" className="text-gray-600 hover:text-[#D9BEA3]">Services</Link>
             <Link to="/reservation" className="text-gray-600 hover:text-[#D9BEA3]">Réserver</Link>
             <Link to="/suivi" className="text-gray-600 hover:text-[#D9BEA3]">Suivi</Link>
             <Link
