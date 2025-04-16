@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Dark mode transition */
+:root {
+    color-scheme: light dark;
+  }
+  
+  body {
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Ensure dark mode text is readable */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  .dark body {
+    @apply text-gray-100;
+  }

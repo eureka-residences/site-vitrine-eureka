@@ -87,3 +87,12 @@ cd real-estate-app
 npm install
 npm run dev
 ```
+
+## Deploiement sur GitHub Pages
+```sh
+npm run build
+npm install -g gh-pages
+# gh-pages -d build
+
+npm run deploy
+```

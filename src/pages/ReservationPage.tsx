@@ -166,8 +166,8 @@ const ReservationPage = () => {
         //     </div>
         //   ))}
         // </div>
-        <div className="py-8">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="py-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {roomTypes.map((room) => (
               <div
                 key={room.id}
@@ -212,7 +212,7 @@ const ReservationPage = () => {
                 </div>
                 
                 {/* Image avec effet zoom */}
-                <div className="h-56 overflow-hidden relative">
+                <div className="h-44 overflow-hidden relative">
                   <img 
                     src={room.imageUrl} 
                     alt={room.name} 
@@ -220,13 +220,13 @@ const ReservationPage = () => {
                   />
                 </div>
                 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{room.name}</h3>
+                <div className="p-4">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-1">{room.name}</h3>
                   <div className="w-16 h-1 bg-[#F7BF57] mb-4"></div>
-                  <p className="text-gray-600 mb-6 min-h-[3rem]">{room.description}</p>
+                  <p className="text-gray-600 mb-3 min-h-[3rem]">{room.description}</p>
                   
                   {/* Ajout de caractéristiques */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-2">
                     <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Wifi</span>
                     <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Bureau</span>
                     <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">Rangements</span>
