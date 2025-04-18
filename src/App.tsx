@@ -8,6 +8,7 @@ import TrackingPage from './pages/TrackingPage';
 import WaitlistPage from './pages/WaitlistPage';
 import ServicesPage from './pages/ServicesPage';
 import Footer from './components/Footer';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           <Route path="/reservation" element={<ReservationPage />} />
           <Route path="/suivi" element={<TrackingPage />} />
           <Route path="/liste-attente" element={<WaitlistPage />} />
+
+          {/* ajoute page contact */}
+          <Route path="/contact" element={<ContactPage />} /> 
         </Routes>
         </main>
 
