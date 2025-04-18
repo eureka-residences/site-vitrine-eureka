@@ -141,63 +141,77 @@ export default function HomePage() {
         description="Découvrez l'environnement unique de nos résidences étudiantes Eureka"
       /> */}
 
-       {/* Section Services */}
-       <div className="py-16 bg-gray-50 dark:bg-[#A5CBD9]/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Nos Services</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Nous proposons un large éventail de services pour rendre votre séjour confortable et pratique
+      {/* Section Services */}
+      <div className="py-16 bg-gray-50 dark:bg-[#A5CBD9]/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Nos Services</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Nous proposons un large éventail de services pour rendre votre séjour confortable et pratique
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Sécurité */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-[#F7BF57]" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Sécurité 24/7</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Accès sécurisé par badge, vidéosurveillance et personnel de sécurité présent jour et nuit pour votre tranquillité.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Sécurité */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-[#F7BF57]" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Sécurité 24/7</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Accès sécurisé par badge, vidéosurveillance et personnel de sécurité présent jour et nuit pour votre tranquillité.
-                </p>
+            {/* Wi-Fi */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
+                <Wifi className="w-6 h-6 text-[#F7BF57]" />
               </div>
-              
-              {/* Wi-Fi */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
-                  <Wifi className="w-6 h-6 text-[#F7BF57]" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Wi-Fi Haut Débit</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Connexion internet fibre optique illimitée dans toutes les chambres et espaces communs pour vos études et loisirs.
-                </p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Wi-Fi Haut Débit</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Connexion internet fibre optique illimitée dans toutes les chambres et espaces communs pour vos études et loisirs.
+              </p>
+            </div>
+            
+            {/* Restauration */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
+                <Utensils className="w-6 h-6 text-[#F7BF57]" />
               </div>
-              
-              {/* Restauration */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
-                  <Utensils className="w-6 h-6 text-[#F7BF57]" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Restauration</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Cafétéria sur place proposant des repas équilibrés et variés. Options végétariennes disponibles et espaces pour cuisiner.
-                </p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Restauration</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Cafétéria sur place proposant des repas équilibrés et variés. Options végétariennes disponibles et espaces pour cuisiner.
+              </p>
+            </div>
+            
+            {/* Espaces communs */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
+              <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-[#F7BF57]" />
               </div>
-              
-              {/* Espaces communs */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#F7BF57]/20 dark:bg-[#F7BF57]/10 rounded-full flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-[#F7BF57]" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Espaces Communs</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Salles d'études, espaces de coworking, salle de sport et espaces de détente pour étudier et socialiser.
-                </p>
-              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Espaces Communs</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Salles d'études, espaces de coworking, salle de sport et espaces de détente pour étudier et socialiser.
+              </p>
             </div>
           </div>
+          
+          {/* Lien vers tous les services */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Des installations modernes pour faciliter votre vie étudiante
+            </p>
+            <Link 
+              to="/services" 
+              className="inline-flex items-center gap-2 bg-[#F7BF57] text-white px-6 py-3 rounded-lg hover:bg-[#e6af4a] transition-colors"
+            >
+              <span>Découvrir tous nos services</span>
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
+      </div>
 
         {/* Section Contact & Localisation */}
         <div className="py-16 bg-white dark:bg-[#A5CBD9]/5">

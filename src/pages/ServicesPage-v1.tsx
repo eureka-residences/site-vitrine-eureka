@@ -11,7 +11,7 @@ import {
   Brush,
   Clock,
   Key,
-  // ShieldCheck
+  ShieldCheck
 } from 'lucide-react';
 
 interface Service {
@@ -39,13 +39,13 @@ const services: Service[] = [
     title: 'Wi-Fi Haut Débit',
     description: 'Connexion internet fibre optique dans tous les logements',
     // category: 'connectivity'
-    category: 'facilities'
+    category: 'security'
   },
   {
     icon: <UtensilsCrossed className="w-8 h-8 text-[#F7BF57]" />,
     title: 'Cafétéria',
     description: 'Espace de restauration avec micro-ondes et distributeurs',
-    category: 'facilities'
+    category: 'lifestyle'
   },
   {
     icon: <Users className="w-8 h-8 text-[#F7BF57]" />,
@@ -81,13 +81,13 @@ const services: Service[] = [
     icon: <Brush className="w-8 h-8 text-[#F7BF57]" />,
     title: 'Service Ménage',
     description: 'Nettoyage régulier des espaces communs',
-    category: 'facilities'
+    category: 'lifestyle'
   },
   {
     icon: <Clock className="w-8 h-8 text-[#F7BF57]" />,
     title: 'Accueil 24/7',
     description: 'Personnel disponible à tout moment',
-    category: 'facilities'
+    category: 'security'
   },
   {
     icon: <Shield className="w-8 h-8 text-[#F7BF57]" />,
@@ -98,18 +98,18 @@ const services: Service[] = [
 ];
 
 const categories = {
-  // security: {
-  //   title: 'Sécurité',
-  //   description: 'Votre sécurité est notre priorité avec des systèmes et du personnel dédiés'
-  // },
+  security: {
+    title: 'Sécurité',
+    description: 'Votre sécurité est notre priorité avec des systèmes et du personnel dédiés'
+  },
 //   connectivity: {
 //     title: 'Connectivité',
 //     description: 'Restez connecté avec notre infrastructure réseau haute performance'
 //   },
-  // lifestyle: {
-  //   title: 'Mode de vie',
-  //   description: 'Des services pensés pour votre confort au quotidien'
-  // },
+  lifestyle: {
+    title: 'Mode de vie',
+    description: 'Des services pensés pour votre confort au quotidien'
+  },
   facilities: {
     title: 'Équipements',
     description: 'Des installations modernes pour faciliter votre vie étudiante'
@@ -121,17 +121,15 @@ export default function ServicesPage() {
     <div className="bg-white dark:bg-gray-900">
       <PageBanner 
         title="Nos Services" 
-        subtitle="Découvrez tous les services inclus dans votre résidence. Des installations modernes pour faciliter votre vie étudiante'"
+        subtitle="Découvrez tous les services inclus dans votre résidence"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {Object.entries(categories).map(([category, 
-                                            // { title, description }
-                                          ]) => (
+        {Object.entries(categories).map(([category, { title, description }]) => (
           <section key={category} className="mb-16">
-            <div className="text-center mb-2">
-              {/* <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{title}</h2> */}
-              {/* <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{description}</p> */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{title}</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{description}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
