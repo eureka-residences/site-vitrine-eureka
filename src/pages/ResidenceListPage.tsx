@@ -95,15 +95,14 @@ export default function ResidenceListPage() {
           </div>
         </div> */}
         {/* Search Section - Enhanced */}
-        <div className="bg-gradient-to-r from-[#A5CBD9]/20 to-[#F7BF57]/10 py-12">
+        <div className="bg-gradient-to-r from-[#A5CBD9]/20 to-[#F7BF57]/10 dark:from-[#A5CBD9]/5 dark:to-[#F7BF57]/5 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-6">
-                {/* <h2 className="text-2xl font-bold text-gray-800">Trouvez votre résidence idéale</h2> */}
-                <p className="text-gray-600 mt-2">Filtrez par nom ou emplacement pour découvrir nos résidences</p>
+                <p className="text-gray-600 dark:text-gray-400 mt-2">Filtrez par nom ou emplacement pour découvrir nos résidences</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-lg">
+              <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex-1 relative">
                     <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#F7BF57]">
@@ -114,7 +113,7 @@ export default function ResidenceListPage() {
                       placeholder="Rechercher une résidence..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent transition-all duration-200"
+                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent transition-all duration-200 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                       aria-label="Rechercher une résidence"
                     />
                   </div>
@@ -126,7 +125,7 @@ export default function ResidenceListPage() {
                     <select
                       value={selectedCity}
                       onChange={(e) => setSelectedCity(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 bg-gray-50 appearance-none focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent transition-all duration-200"
+                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent transition-all duration-200 text-gray-800 dark:text-gray-100"
                       aria-label="Filtrer par ville"
                     >
                       <option value="all">Toutes les villes</option>
@@ -140,7 +139,7 @@ export default function ResidenceListPage() {
                   </div>
                   
                   <button 
-                    className="bg-[#F7BF57] hover:bg-[#e6af4a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                    className="bg-[#F7BF57] hover:bg-[#e6af4a] text-white py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center dark:hover:bg-[#F7BF57]/80"
                     onClick={() => {/* Vous pouvez ajouter une fonction de recherche explicite ici */}}
                     aria-label="Lancer la recherche"
                   >
@@ -150,24 +149,24 @@ export default function ResidenceListPage() {
                 </div>
                 
                 {/* Tags populaires */}
-                <div className="mt-4 pt-4 border-t border-gray-100">
+                <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-sm text-gray-500">Recherches populaires :</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Recherches populaires :</span>
                     <button 
                       onClick={() => setSearchTerm("Centre-ville")}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors"
+                      className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full transition-colors"
                     >
                       Centre-ville
                     </button>
                     <button 
                       onClick={() => setSearchTerm("Campus")}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors"
+                      className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full transition-colors"
                     >
                       Près des campus
                     </button>
                     <button 
                       onClick={() => setSelectedCity("abidjan")}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors"
+                      className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full transition-colors"
                     >
                       Abidjan
                     </button>
@@ -176,7 +175,7 @@ export default function ResidenceListPage() {
               </div>
               
               {/* Résultats stats - optionnel */}
-              <div className="mt-4 text-center text-sm text-gray-600">
+              <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
                 {filteredResidences.length} résidence(s) trouvée(s)
               </div>
             </div>
@@ -190,7 +189,7 @@ export default function ResidenceListPage() {
               <Link
                 key={residence.id}
                 to={`/residences/${residence.id}`}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <div className="relative h-48">
                   <img
@@ -200,22 +199,22 @@ export default function ResidenceListPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{residence.name}</h3>
-                  <div className="flex items-center gap-2 text-gray-600 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{residence.name}</h3>
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-2">
                     <MapPin size={16} />
                     <span>{residence.address}</span>
                   </div>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="flex items-center gap-1 text-gray-600">
+                    <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                       <Calendar size={16} />
                       <span>{residence.availability}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-600">
+                    <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                       <Users size={16} />
                       <span>{residence.capacity} places</span>
                     </div>
                   </div>
-                  <p className="text-gray-600">{residence.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{residence.description}</p>
                 </div>
               </Link>
             ))}

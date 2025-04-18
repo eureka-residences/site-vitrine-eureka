@@ -1,4 +1,3 @@
-import React from 'react';
 import PageBanner from '../components/PageBanner';
 import { 
   Shield, 
@@ -119,7 +118,7 @@ const categories = {
 
 export default function ServicesPage() {
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900">
       <PageBanner 
         title="Nos Services" 
         subtitle="Découvrez tous les services inclus dans votre résidence"
@@ -129,8 +128,8 @@ export default function ServicesPage() {
         {Object.entries(categories).map(([category, { title, description }]) => (
           <section key={category} className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">{description}</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{title}</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{description}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -139,17 +138,17 @@ export default function ServicesPage() {
                 .map(service => (
                   <div 
                     key={service.title}
-                    className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200"
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200"
                   >
                     <div className="flex items-start">
-                      <div className="bg-[#F7BF57]/10 rounded-lg p-3">
+                      <div className="bg-[#F7BF57]/10 dark:bg-[#F7BF57]/20 rounded-lg p-3">
                         {service.icon}
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                           {service.title}
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-gray-300">
                           {service.description}
                         </p>
                       </div>
