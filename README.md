@@ -4,7 +4,7 @@
 ## 📋 Présentation
 Cette application web a été conçue avec React et TypeScript, en suivant une approche modulaire, responsive et moderne, afin de présenter la Résidence Eureka de manière attractive et interactive.
 
-![alt text](demo.png)
+![alt text](demo-v2.png)
 
 
 ## ✨ Fonctionnalités principales
