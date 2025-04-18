@@ -97,5 +97,7 @@ npm install -g gh-pages
 npm run deploy
 
 
+![Demo v2](demo-v2.png)
+
 ![alt text](image.png)
 ```
