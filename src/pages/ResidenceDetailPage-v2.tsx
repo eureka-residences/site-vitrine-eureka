@@ -17,11 +17,8 @@ import {
   Building,
   BadgeCheck,
   Star,
-  Calendar,
-
+  Calendar
 } from 'lucide-react';
-
-
 
 // Images from Unsplash (free to use)
 const residenceImage = "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
@@ -33,7 +30,6 @@ const roomStudio = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ix
 interface RoomType {
   id: string;
   name: string;
-  tagline: string;
   description: string;
   price: number;
   size: number;
@@ -65,8 +61,8 @@ const residences: Record<string, Residence> = {
   'residence-eureka': {
     id: 'residence-eureka',
     name: 'Résidence Eureka',
-    address: 'Carrefour de l\'Université',
-    city: 'Yaoundé',
+    address: '123 Avenue de l\'Université',
+    city: 'Abidjan',
     description: 'Notre résidence principale située au cœur du quartier universitaire d\'Abidjan. Moderne et confortable, elle offre un environnement idéal pour vos études.',
     mainImage: residenceImage,
     images: [residenceImage, residenceImage, residenceImage],
@@ -77,36 +73,33 @@ const residences: Record<string, Residence> = {
     capacity: 150,
     roomTypes: [
       {
-        id: 'solo-confort',
-        name: 'Chambre Solo Confort',
-        tagline: "L'indépendance tout confort !",
-        description: 'Une chambre moderne et meublée, idéale pour une personne, avec lit simple (90x200), kitchenette, salle de bain privative et balcon.',
-        price: 65000,
-        size: 15,
+        id: 'standard',
+        name: 'Chambre Standard',
+        description: 'Chambre individuelle avec salle de bain partagée, parfaite pour les étudiants cherchant un logement fonctionnel à prix abordable.',
+        price: 60000,
+        size: 12,
         images: [roomStandard],
-        features: ['Lit simple (90x200)', 'Kitchenette', 'Salle de bain privative', 'Balcon', 'Bureau d\'étude', 'Wifi haut débit', 'Rangements'],
+        features: ['Lit simple', 'Bureau d\'étude', 'Wifi haut débit', 'Rangements'],
         available: true
       },
       {
-        id: 'duo-partagee',
-        name: 'Chambre Duo Partagée',
-        tagline: "Le bon plan pour colocs !",
-        description: 'Spacieuse et optimisée pour deux étudiants, avec deux lits simples (90x200), kitchenette, salle de bain et balcon pour respirer.',
-        price: 45000,
-        size: 18,
+        id: 'comfort',
+        name: 'Chambre Confort',
+        description: 'Chambre individuelle avec salle de bain privative, offrant plus d\'intimité et de confort pour un séjour serein.',
+        price: 75000,
+        size: 15,
         images: [roomComfort],
-        features: ['Deux lits simples (90x200)', 'Kitchenette', 'Salle de bain partagée', 'Balcon', 'Bureau d\'étude pour chaque étudiant', 'Wifi haut débit', 'Rangements'],
+        features: ['Lit double', 'Bureau d\'étude', 'Wifi haut débit', 'Salle de bain privée', 'Petit réfrigérateur'],
         available: true
       },
       {
-        id: 'premium-solo',
-        name: 'Chambre Premium Solo',
-        tagline: "Luxe et espace rien que pour vous.",
-        description: 'Une chambre haut de gamme pour une personne, avec un grand lit double (180x200), kitchenette équipée, salle de bain privative et balcon. Le confort d\'un studio, l\'ambiance d\'une résidence.',
-        price: 85000,
-        size: 18,
+        id: 'studio',
+        name: 'Studio',
+        description: 'Studio complet avec kitchenette équipée, idéal pour les étudiants souhaitant une indépendance complète et un espace de vie plus grand.',
+        price: 90000,
+        size: 20,
         images: [roomStudio],
-        features: ['Lit double (180x200)', 'Kitchenette équipée', 'Salle de bain privative', 'Balcon', 'Grand bureau d\'étude', 'Wifi haut débit', 'Rangements spacieux'],
+        features: ['Lit double', 'Kitchenette', 'Salle de bain privée', 'Espace repas', 'Rangements spacieux'],
         available: false
       }
     ],
@@ -153,6 +146,11 @@ const ResidenceDetailPage = () => {
     );
   }
 
+  const truncateDescription = (text: string, maxLength = 200) => {
+    if (text.length <= maxLength || showFullDescription) return text;
+    return text.substring(0, maxLength) + '...';
+  };
+
   const getAmenityIcon = (amenity: string) => {
     if (amenity.includes('Sécurité')) return <Shield size={18} className="text-[#F7BF57]" />;
     if (amenity.includes('Wifi')) return <Wifi size={18} className="text-[#F7BF57]" />;
@@ -167,12 +165,9 @@ const ResidenceDetailPage = () => {
     if (feature.includes('Wifi')) return <Wifi size={16} className="text-gray-600 dark:text-gray-400" />;
     if (feature.includes('bain')) return <Bath size={16} className="text-gray-600 dark:text-gray-400" />;
     if (feature.includes('Kitchenette')) return <Coffee size={16} className="text-gray-600 dark:text-gray-400" />;
-    if (feature.includes('Balcon')) return <MapPin size={16} className="text-gray-600 dark:text-gray-400" />;
     if (feature.includes('Rangements')) return <ShowerHead size={16} className="text-gray-600 dark:text-gray-400" />;
     return <Check size={16} className="text-gray-600 dark:text-gray-400" />;
   };
-
-  // Reste du code pour getAmenityIcon et truncateDescription reste inchangé...
 
   return (
     <div className="bg-white dark:bg-gray-900 pb-12">
@@ -275,7 +270,6 @@ const ResidenceDetailPage = () => {
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{room.name}</h3>
                         <p className="text-[#F7BF57] font-medium">{room.size} m²</p>
-                        <p className="text-sm italic mt-1 text-gray-500 dark:text-gray-400">{room.tagline}</p>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -336,7 +330,7 @@ const ResidenceDetailPage = () => {
               </div>
             ))}
 
-            {/* Room comparison table */}
+            {/* Room comparison table (optional for desktop) */}
             <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mb-8">
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Comparaison des logements</h3>
@@ -356,7 +350,6 @@ const ResidenceDetailPage = () => {
                         <tr key={room.id} className="border-b border-gray-100 dark:border-gray-700">
                           <td className="py-4">
                             <div className="font-semibold text-gray-900 dark:text-gray-100">{room.name}</div>
-                            <div className="text-xs text-gray-500 dark:text-gray-400">{room.tagline}</div>
                           </td>
                           <td className="py-4 text-gray-600 dark:text-gray-300">{room.size} m²</td>
                           <td className="py-4">
@@ -401,7 +394,7 @@ const ResidenceDetailPage = () => {
             </div>
           </div>
 
-          {/* Sidebar (30%) reste inchangé */}
+          {/* Sidebar (30%) */}
           <div className="lg:w-4/12">
             {/* Contact information */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
@@ -483,11 +476,11 @@ const ResidenceDetailPage = () => {
         </div>
         
         {/* Call to action - Centered at bottom */}
-        <div className="max-w-2xl mx-auto my-12">
+        <div className="max-w-2xl mx-auto my-12 text-center">
           <div className="bg-gradient-to-r from-[#F7BF57]/20 to-[#D9BEA3]/20 dark:from-[#F7BF57]/10 dark:to-[#D9BEA3]/10 rounded-xl p-6">
-            <div className="flex items-center mb-4">
+            <div className="flex items-center justify-center mb-4">
               <div className="p-2 rounded-full bg-[#F7BF57]/20 mr-3">
-                <Star size={20} className="text-[#F7BF57]" />
+          <Star size={20} className="text-[#F7BF57]" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Réservez votre logement</h3>
             </div>
@@ -496,12 +489,13 @@ const ResidenceDetailPage = () => {
             </p>
             <Link
               to="/reservation"
-              className="block w-full bg-[#F7BF57] hover:bg-[#e6af4a] text-center py-3 rounded-lg text-white font-medium transition-colors"
+              className="inline-block bg-[#F7BF57] hover:bg-[#e6af4a] px-8 py-3 rounded-lg text-white font-medium transition-colors"
             >
               Réserver maintenant
             </Link>
           </div>
         </div>
+
       </div>
     </div>
   );

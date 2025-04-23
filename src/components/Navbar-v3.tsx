@@ -159,7 +159,6 @@ export default function Navbar() {
     }
   ];
 
- // Pour la partie NavLink du composant
   const NavLink = ({ item }: { item: NavItemProps }) => {
     const hasChildren = item.children && item.children.length > 0;
     
@@ -193,8 +192,10 @@ export default function Navbar() {
             )}
           </Link>
         )}
+  
 
-        {/* Mega Dropdown Menu */}
+
+        {/* Mega Dropdown Menu - Style Free Mobile */}
         {hasChildren && activeDropdown === item.label && (
           <div className="absolute z-10 left-0 mt-2 w-screen transform -translate-x-1/2 left-1/2">
             <div className="max-w-7xl mx-auto">
@@ -208,12 +209,6 @@ export default function Navbar() {
                           <Link 
                             to={category.to} 
                             className="block text-lg font-medium text-gray-900 dark:text-white hover:text-[#F7BF57] dark:hover:text-[#F7BF57] mb-2 transition-colors"
-                            onClick={(e) => {
-                              // Empêcher la fermeture du menu lors du clic sur le lien
-                              e.stopPropagation();
-                              // Fermer le menu après un court délai pour permettre la navigation
-                              setTimeout(() => setActiveDropdown(null), 100);
-                            }}
                           >
                             {category.label}
                           </Link>
@@ -226,10 +221,6 @@ export default function Navbar() {
                                   <Link 
                                     to={subItem.to}
                                     className="text-sm text-gray-600 dark:text-gray-300 hover:text-[#F7BF57] dark:hover:text-[#F7BF57] flex items-center transition-colors"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setTimeout(() => setActiveDropdown(null), 100);
-                                    }}
                                   >
                                     <ChevronRight size={14} className="mr-1 text-[#F7BF57]" />
                                     {subItem.label}
@@ -267,14 +258,6 @@ export default function Navbar() {
                         <Link
                           to={item.to}
                           className="mt-4 inline-flex items-center text-sm font-medium text-white hover:text-[#F7BF57] drop-shadow-lg"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setActiveDropdown(null);
-                            // Navigate after dropdown is closed
-                            setTimeout(() => {
-                              window.location.href = item.to;
-                            }, 100);
-                          }}
                         >
                           Tout découvrir
                           <ChevronRight size={16} className="ml-1" />
@@ -295,10 +278,6 @@ export default function Navbar() {
                   <Link
                     to={item.label === 'Réserver' ? '/reservation' : item.to}
                     className="bg-[#F7BF57] hover:bg-[#e6af4a] text-white text-sm rounded px-4 py-2 transition-colors flex items-center"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setTimeout(() => setActiveDropdown(null), 100);
-                    }}
                   >
                     {item.label === 'Réserver' ? 'Réserver maintenant' : `Découvrir tous nos ${item.label.toLowerCase()}`}
                   </Link>
@@ -332,7 +311,7 @@ export default function Navbar() {
                 className={`transition-transform duration-200 ${isSubmenuOpen ? 'rotate-180' : ''}`} 
               />
             </button>
-  
+
             {/* Mobile Submenu */}
             {isSubmenuOpen && (
               <div className="bg-gray-50 dark:bg-gray-800">
@@ -341,10 +320,6 @@ export default function Navbar() {
                     <Link 
                       to={category.to}
                       className="block font-medium text-gray-900 dark:text-white mb-1"
-                      onClick={() => {
-                        setIsSubmenuOpen(false);
-                        setIsOpen(false);
-                      }}
                     >
                       {category.label}
                     </Link>
@@ -357,10 +332,6 @@ export default function Navbar() {
                             <Link 
                               to={subItem.to}
                               className="text-sm py-1 block text-gray-600 dark:text-gray-300 flex items-center"
-                              onClick={() => {
-                                setIsSubmenuOpen(false);
-                                setIsOpen(false);
-                              }}
                             >
                               <ChevronRight size={14} className="mr-1 text-[#F7BF57]" />
                               {subItem.label}

@@ -114,21 +114,33 @@ export default function HomePage() {
                 ))}
               </ul>
               <Link
-                to="/residences/gamma"
+                to="/residences/residence-eureka"
                 className="text-[#D9BEA3] font-semibold hover:text-[#A5CBD9] transition-colors flex items-center gap-2 w-fit"
               >
                 Découvrir la résidence
                 <ArrowRight size={20} />
               </Link>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+            {/* <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <img
               src={room2}
               alt="Chambre Témoin"
               className="absolute inset-0 w-full h-full object-cover"
               />
+            </div> */}
+              <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl mb-8">
+                  <iframe
+                    src="https://www.youtube.com/embed/g9er8Rwxdm4?si=_5F0-YPUWXyFySQx"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+
+                  </iframe>
+              </div>
             </div>
-          </div>
         </div>
       </section>
 

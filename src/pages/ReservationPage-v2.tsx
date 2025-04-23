@@ -9,48 +9,40 @@ import room3 from '../assets/images/room3.jpeg';
 interface RoomType {
   id: string;
   name: string;
-  tagline: string;
   description: string;
   price: number;
   available: number;
   imageUrl: string;
-  size: number;
   features?: string[];
 }
 
 const roomTypes: RoomType[] = [
   {
-    id: 'solo-confort',
-    name: 'Chambre Solo Confort',
-    tagline: "L'indépendance tout confort !",
-    description: 'Une chambre moderne et meublée, idéale pour une personne, avec lit simple (90x200), kitchenette, salle de bain privative et balcon.',
-    price: 65000,
-    size: 15,
+    id: 'standard',
+    name: 'Chambre Standard',
+    description: 'Chambre individuelle avec salle de bain partagée et de nombreuses commodités.',
+    price: 60000,
     available: 5,
     imageUrl: room1,
-    features: ['Lit simple (90x200)', 'Kitchenette', 'Salle de bain privative', 'Balcon', 'Bureau d\'étude', 'Wifi haut débit']
+    features: ['Lit simple', 'Bureau d\'étude', 'Wifi haut débit', 'Rangements']
   },
   {
-    id: 'duo-partagee',
-    name: 'Chambre Duo Partagée',
-    tagline: "Le bon plan pour colocs !",
-    description: 'Spacieuse et optimisée pour deux étudiants, avec deux lits simples (90x200), kitchenette, salle de bain et balcon pour respirer.',
-    price: 45000,
-    size: 18,
+    id: 'comfort',
+    name: 'Chambre Confort',
+    description: 'Chambre individuelle avec salle de bain privative pour plus d\'intimité.',
+    price: 70000,
     available: 3,
     imageUrl: room2,
-    features: ['Deux lits simples (90x200)', 'Kitchenette', 'Salle de bain partagée', 'Balcon', 'Bureau d\'étude pour chaque étudiant', 'Wifi haut débit']
+    features: ['Lit double', 'Bureau d\'étude', 'Wifi haut débit', 'Salle de bain privée']
   },
   {
-    id: 'premium-solo',
-    name: 'Chambre Premium Solo',
-    tagline: "Luxe et espace rien que pour vous.",
-    description: 'Une chambre haut de gamme pour une personne, avec un grand lit double (180x200), kitchenette équipée, salle de bain privative et balcon. Le confort d\'un studio, l\'ambiance d\'une résidence.',
-    price: 85000,
-    size: 18,
+    id: 'studio',
+    name: 'Studio',
+    description: 'Studio complet avec kitchenette équipée, idéal pour l\'indépendance.',
+    price: 80000,
     available: 2,
     imageUrl: room3,
-    features: ['Lit double (180x200)', 'Kitchenette équipée', 'Salle de bain privative', 'Balcon', 'Grand bureau d\'étude', 'Wifi haut débit', 'Rangements spacieux']
+    features: ['Lit double', 'Kitchenette', 'Salle de bain privée', 'Espace repas']
   }
 ];
 
@@ -61,8 +53,7 @@ const ReservationPage = () => {
     studentName: '',
     parentName: '',
     email: '',
-    phone: '',
-    accommodationType: ''
+    phone: ''
   });
   const [reservationNumber, setReservationNumber] = useState<string>('');
 
@@ -71,7 +62,7 @@ const ReservationPage = () => {
     setStep(2);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -180,8 +171,6 @@ const ReservationPage = () => {
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{room.name}</h3>
-                            <p className="text-[#F7BF57] font-medium">{room.size} m²</p>
-                            <p className="text-sm italic mt-1 text-gray-500 dark:text-gray-400">{room.tagline}</p>
                             <div className="w-12 h-0.5 bg-[#F7BF57] my-2"></div>
                           </div>
                           <div className="text-right">
@@ -254,43 +243,6 @@ const ReservationPage = () => {
                   </p>
                 </div>
           
-                <div className="mb-6">
-                  <label htmlFor="accommodationType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Type de logement
-                  </label>
-                  <select
-                    id="accommodationType"
-                    name="accommodationType"
-                    value={formData.accommodationType}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
-                    required
-                    aria-required="true"
-                  >
-                    <option value="">Sélectionnez un type de logement</option>
-                    <option value="chambreSoloConfort">Chambre Solo Confort</option>
-                    <option value="chambreDuoPartagee">Chambre Duo Partagée</option>
-                    <option value="chambrePremiumSolo">Chambre Premium Solo</option>
-                  </select>
-                  <div className="mt-3">
-                    {formData.accommodationType === "chambreSoloConfort" && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
-                        <span className="font-medium">Chambre Solo Confort:</span> Chambre individuelle de 15m² avec salle de bain privative, kitchenette équipée et espace de travail. Idéale pour les étudiants cherchant indépendance et tranquillité.
-                      </p>
-                    )}
-                    {formData.accommodationType === "chambreDuoPartagee" && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
-                        <span className="font-medium">Chambre Duo Partagée:</span> Chambre de 18m² partagée pour deux étudiants avec espace personnel pour chacun, salle de bain commune et kitchenette. Option économique favorisant la convivialité.
-                      </p>
-                    )}
-                    {formData.accommodationType === "chambrePremiumSolo" && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 p-3 bg-gray-100 dark:bg-gray-800 rounded-md">
-                        <span className="font-medium">Chambre Premium Solo:</span> Chambre individuelle spacieuse de 18m² avec salle de bain privative, cuisine entièrement équipée et mobilier haut de gamme. Pour un confort optimal.
-                      </p>
-                    )}
-                  </div>
-                </div>
-
                 <div>
                   <label htmlFor="parentName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Nom du parent ou tuteur légal
