@@ -38,7 +38,7 @@ const residences: Residence[] = [
     blocks: []
   },
   {
-    id: 'eureka',
+    id: 'residence-eureka',
     name: 'Eureka',
     address: '42 Avenue des Sciences, Campus Douala',
     description: 'À proximité immédiate du campus, la résidence Sigma allie confort et praticité.',

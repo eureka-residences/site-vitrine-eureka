@@ -9,6 +9,10 @@ import WaitlistPage from './pages/WaitlistPage';
 import ServicesPage from './pages/ServicesPage';
 import Footer from './components/Footer';
 import ContactPage from './pages/ContactPage';
+import AccommodationListPage from './pages/AccommodationListPage';
+import AccommodationDetailPage from './pages/AccommodationDetailPage';
+
+
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/residences" element={<ResidenceListPage />} />
           <Route path="/residences/:id" element={<ResidenceDetailPage />} />
+          <Route path="/logements" element={<AccommodationListPage />} />
+          <Route path="/logements/:id" element={<AccommodationDetailPage />} />
+
+
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/reservation" element={<ReservationPage />} />
           <Route path="/suivi" element={<TrackingPage />} />

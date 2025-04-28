@@ -61,42 +61,49 @@ export default function Navbar() {
       label: 'Accueil',
       icon: <Home size={18} />
     },
+    // {
+    //   to: '/residences',
+    //   label: 'Résidences',
+    //   icon: <Building size={18} />,
+    //   image: residenceImage,
+      // children: [
+      //   {
+      //     to: '/residences/residence-eureka',
+      //     label: 'Résidence Eureka',
+      //     description: 'Notre résidence principale située au cœur du campus',
+      //     subItems: [
+      //       { to: '/residences/residence-eureka/chambre-standard', label: 'Chambre Standard' },
+      //       { to: '/residences/residence-eureka/chambre-confort', label: 'Chambre Confort' },
+      //       { to: '/residences/residence-eureka/studio', label: 'Studio' }
+      //     ]
+      //   },
+      //   {
+      //     to: '/residences/residence-alpha',
+      //     label: 'Résidence Alpha',
+      //     description: 'Moderne et confortable, proche du centre-ville',
+      //     subItems: [
+      //       { to: '/residences/residence-alpha/chambre-standard', label: 'Chambre Standard' },
+      //       { to: '/residences/residence-alpha/studio', label: 'Studio' },
+      //     ]
+      //   },
+      //   {
+      //     to: '/residences/residence-beta',
+      //     label: 'Résidence Beta',
+      //     description: 'Chambres économiques pour les petits budgets',
+      //     subItems: [
+      //       { to: '/residences/residence-beta/chambre-economique', label: 'Chambre Économique' },
+      //       { to: '/residences/residence-beta/chambre-partagee', label: 'Chambre Partagée' },
+      //     ]
+      //   }
+      // ]
+    // },
     {
-      to: '/residences',
-      label: 'Résidences',
-      icon: <Building size={18} />,
-      image: residenceImage,
-      children: [
-        {
-          to: '/residences/residence-eureka',
-          label: 'Résidence Eureka',
-          description: 'Notre résidence principale située au cœur du campus',
-          subItems: [
-            { to: '/residences/residence-eureka/chambre-standard', label: 'Chambre Standard' },
-            { to: '/residences/residence-eureka/chambre-confort', label: 'Chambre Confort' },
-            { to: '/residences/residence-eureka/studio', label: 'Studio' }
-          ]
-        },
-        {
-          to: '/residences/residence-alpha',
-          label: 'Résidence Alpha',
-          description: 'Moderne et confortable, proche du centre-ville',
-          subItems: [
-            { to: '/residences/residence-alpha/chambre-standard', label: 'Chambre Standard' },
-            { to: '/residences/residence-alpha/studio', label: 'Studio' },
-          ]
-        },
-        {
-          to: '/residences/residence-beta',
-          label: 'Résidence Beta',
-          description: 'Chambres économiques pour les petits budgets',
-          subItems: [
-            { to: '/residences/residence-beta/chambre-economique', label: 'Chambre Économique' },
-            { to: '/residences/residence-beta/chambre-partagee', label: 'Chambre Partagée' },
-          ]
-        }
-      ]
+      label: 'Logements',
+      to: '/logements',
+      icon: <Home size={18} />, // Importez l'icône appropriée en haut du fichier si nécessaire
     },
+
+    
     {
       to: '/services',
       label: 'Services',
@@ -139,18 +146,18 @@ export default function Navbar() {
       label: 'Réserver',
       icon: <CalendarCheck size={18} />,
       image: reservationImage,
-      children: [
-        {
-          to: '/reservation/logement',
-          label: 'Réserver un logement',
-          description: 'Trouvez et réservez votre futur logement',
-        },
-        {
-          to: '/reservation/visite',
-          label: 'Planifier une visite',
-          description: 'Venez visiter nos résidences',
-        }
-      ]
+      // children: [
+      //   {
+      //     to: '/reservation/logement',
+      //     label: 'Réserver un logement',
+      //     description: 'Trouvez et réservez votre futur logement',
+      //   },
+      //   {
+      //     to: '/reservation/visite',
+      //     label: 'Planifier une visite',
+      //     description: 'Venez visiter nos résidences',
+      //   }
+      // ]
     },
     {
       to: '/contact',
@@ -283,6 +290,7 @@ export default function Navbar() {
                     </div>
                   </div>
                 </div>
+
                 
                 {/* Bottom CTA */}
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 flex justify-between items-center border-t border-gray-100 dark:border-gray-700">
