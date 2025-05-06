@@ -174,7 +174,7 @@ const ReservationPage = () => {
                             <div className="w-12 h-0.5 bg-[#F7BF57] my-2"></div>
                           </div>
                           <div className="text-right">
-                            <span className="text-2xl font-bold text-[#F7BF57]">{room.price.toLocaleString()}</span>
+                            {/* <span className="text-2xl font-bold text-[#F7BF57]">{room.price.toLocaleString()}</span> */}
                             <span className="text-gray-600 dark:text-gray-400 text-sm ml-1">F.CFA</span>
                             <div className="text-xs text-gray-500 dark:text-gray-500">par mois</div>
                           </div>

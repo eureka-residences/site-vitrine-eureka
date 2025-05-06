@@ -279,7 +279,7 @@ const ResidenceDetailPage = () => {
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                          {room.price.toLocaleString()} <span className="text-sm font-normal text-gray-500 dark:text-gray-400">F.CFA/mois</span>
+                          {/* {room.price.toLocaleString()} <span className="text-sm font-normal text-gray-500 dark:text-gray-400">F.CFA/mois</span> */}
                         </div>
                         <div className="flex items-center justify-end mt-1">
                           {room.available ? (
@@ -360,7 +360,7 @@ const ResidenceDetailPage = () => {
                           </td>
                           <td className="py-4 text-gray-600 dark:text-gray-300">{room.size} m²</td>
                           <td className="py-4">
-                            <div className="font-semibold text-gray-900 dark:text-gray-100">{room.price.toLocaleString()} F.CFA</div>
+                            {/* <div className="font-semibold text-gray-900 dark:text-gray-100">{room.price.toLocaleString()} F.CFA</div> */}
                             <div className="text-xs text-gray-500 dark:text-gray-400">par mois</div>
                           </td>
                           <td className="py-4">

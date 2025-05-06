@@ -192,7 +192,7 @@ export default function AccommodationListPage() {
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-[#F7BF57] font-medium">{accommodation.size} m²</span>
                   <span className="text-gray-900 dark:text-gray-100 font-bold">
-                    {accommodation.price.toLocaleString()} F.CFA
+                     {/* {accommodation.price.toLocaleString()} F.CFA */}
                     <span className="text-xs text-gray-500 dark:text-gray-400 font-normal">/mois</span>
                   </span>
                 </div>

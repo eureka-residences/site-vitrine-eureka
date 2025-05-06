@@ -458,7 +458,7 @@ export default function AccommodationDetailPage() {
               <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700">
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {accommodation.price.toLocaleString()} F.CFA
+                    {/* {accommodation.price.toLocaleString()} F.CFA */}
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/mois</span>
                   </h3>
                   
@@ -472,19 +472,19 @@ export default function AccommodationDetailPage() {
                     <div className="flex justify-between">
                       <span className="text-gray-600 dark:text-gray-300">Caution</span>
                       <span className="font-medium text-gray-900 dark:text-white">
-                        {(accommodation.price * 2).toLocaleString()} F.CFA
+                        {/* {(accommodation.price * 2).toLocaleString()} F.CFA */}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600 dark:text-gray-300">Frais de dossier</span>
                       <span className="font-medium text-gray-900 dark:text-white">
-                        {Math.round(accommodation.price * 0.1).toLocaleString()} F.CFA
+                        {/* {Math.round(accommodation.price * 0.1).toLocaleString()} F.CFA */}
                       </span>
                     </div>
                     <div className="flex justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                       <span className="font-semibold text-gray-900 dark:text-white">Total à l'entrée</span>
                       <span className="font-bold text-gray-900 dark:text-white">
-                        {(accommodation.price * 3.1).toLocaleString()} F.CFA
+                        {/* {(accommodation.price * 3.1).toLocaleString()} F.CFA */}
                       </span>
                     </div>
                   </div>
