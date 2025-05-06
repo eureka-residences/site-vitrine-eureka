@@ -74,7 +74,7 @@ const ContactPage = () => {
     { 
       title: "Adresse",
       icon: <MapPin className="h-6 w-6 text-[#F7BF57]" />,
-      content: "123 Avenue de l'Université, Abidjan, Côte d'Ivoire",
+      content: "Yaoundé, Cameroun",
       action: {
         label: "Voir sur Google Maps",
         href: "https://maps.google.com",
@@ -94,10 +94,10 @@ const ContactPage = () => {
     { 
       title: "Téléphone",
       icon: <Phone className="h-6 w-6 text-[#F7BF57]" />,
-      content: "+225 07 12 34 56 78",
+      content: "+2237 699 81 23 45",
       action: {
         label: "Nous appeler",
-        href: "tel:+2250712345678",
+        href: "tel:+237 699 81 23 45",
         external: true
       }
     },
@@ -217,7 +217,7 @@ const ContactPage = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                          placeholder="+225 XX XX XX XX XX"
+                          placeholder="+237 XX XX XX XX"
                         />
                       </div>
                       
