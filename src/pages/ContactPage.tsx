@@ -94,7 +94,7 @@ const ContactPage = () => {
     { 
       title: "Téléphone",
       icon: <Phone className="h-6 w-6 text-[#F7BF57]" />,
-      content: "+2237 699 81 23 45",
+      content: "+237 699 81 23 45",
       action: {
         label: "Nous appeler",
         href: "tel:+237 699 81 23 45",

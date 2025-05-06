@@ -67,7 +67,7 @@ const residences: Record<string, Residence> = {
     name: 'Résidence Eureka',
     address: 'Carrefour de l\'Université',
     city: 'Yaoundé',
-    description: 'Notre résidence principale située au cœur du quartier universitaire d\'Abidjan. Moderne et confortable, elle offre un environnement idéal pour vos études.',
+    description: "Notre résidence principale située près de l'université Saint-Jean. Moderne et confortable, elle offre un environnement idéal pour vos études.",
     mainImage: residenceImage,
     images: [residenceImage, residenceImage, residenceImage],
     phone: '+225 07 12 34 56 78',
