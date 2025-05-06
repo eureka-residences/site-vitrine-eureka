@@ -44,11 +44,11 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-[#F7BF57]" />
-                15 Rue des Arts, 33000 Bordeaux
+                Yaoundé, Cameroun
               </p>
               <p className="flex items-center">
                 <Phone className="w-5 h-5 mr-2 text-[#F7BF57]" />
-                +33 5 56 00 00 00
+                +237 699 81 23 45
               </p>
               <p className="flex items-center">
                 <Mail className="w-5 h-5 mr-2 text-[#F7BF57]" />
