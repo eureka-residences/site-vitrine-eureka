@@ -28,7 +28,7 @@ const roomTypes: RoomType[] = [
     size: 15,
     available: 5,
     imageUrl: room1,
-    features: ['Lit simple (90x200)', 'Kitchenette', 'Salle de bain privative', 'Balcon', 'Bureau d\'étude', 'Wifi haut débit']
+    features: ['Lit simple (90x200)', 'Kitchenette', 'Salle de bain privative', 'Balcon', 'Bureau d\'étude']
   },
   {
     id: 'duo-partagee',
@@ -39,7 +39,7 @@ const roomTypes: RoomType[] = [
     size: 18,
     available: 3,
     imageUrl: room2,
-    features: ['Deux lits simples (90x200)', 'Kitchenette', 'Salle de bain partagée', 'Balcon', 'Bureau d\'étude pour chaque étudiant', 'Wifi haut débit']
+    features: ['Deux lits simples (90x200)', 'Kitchenette', 'Salle de bain partagée', 'Balcon', 'Bureau d\'étude', ]
   },
   {
     id: 'premium-solo',
@@ -50,7 +50,7 @@ const roomTypes: RoomType[] = [
     size: 18,
     available: 2,
     imageUrl: room3,
-    features: ['Lit double (180x200)', 'Kitchenette équipée', 'Salle de bain privative', 'Balcon', 'Grand bureau d\'étude', 'Wifi haut débit', 'Rangements spacieux']
+    features: ['Lit double (180x200)', 'Kitchenette équipée', 'Salle de bain privative', 'Balcon', 'Bureau d\'étude', 'Rangements spacieux']
   }
 ];
 
