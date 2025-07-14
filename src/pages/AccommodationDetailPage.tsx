@@ -86,7 +86,7 @@ const accommodationData: Record<string, AccommodationDetail> = {
       cette chambre permet de partager les coûts tout en bénéficiant du confort de la résidence.
       
       Située au 3ème étage de la résidence Eureka, cette chambre dispose d'une exposition
-      Ouest offrant de beaux couchers de soleil et une lumière douce en fin de journée  *****ajout texte Keria*****.
+      Ouest offrant de beaux couchers de soleil et une lumière douce en fin de journée  *****ajout texte Keria*****.(preuve Thomas)
     `,
     features: ['Deux lits simples', 'Kitchenette', 'Salle de bain partagée', 'Wifi haut débit', 'Double bureau d\'étude'],
     amenities: [
