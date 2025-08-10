@@ -1,13 +1,15 @@
 import { ArrowRight, Shield, Wifi, Utensils, Users, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ParallaxSection from '../components/ParallaxSection';
-import TestimonialCard from '../components/TestimonialCard';
-import GuidedTour from '../components/GuidedTour';
-import ImmersiveVideo from '../components/ImmersiveVideo'; // Importez le nouveau composant
+import ParallaxSection from '@components/ParallaxSection';
+import TestimonialCard from '@components/TestimonialCard';
+import GuidedTour from '@components/GuidedTour';
+import ImmersiveVideo from '@components/ImmersiveVideo'; // Importez le nouveau composant
 
 import type { Testimonial } from '../types';
 
 import room2 from '../assets/images/room2.jpeg';
+
+import SITE_CONFIG from '@site-config';
 
 
 const testimonials: Testimonial[] = [
@@ -157,7 +159,7 @@ export default function HomePage() {
       <div className="py-16 bg-gray-50 dark:bg-[#A5CBD9]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Nos Services</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Ce que nous offrons</h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Nous proposons un large éventail de services pour rendre votre séjour confortable et pratique
             </p>
@@ -275,7 +277,7 @@ export default function HomePage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Téléphone</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        +237 699 88 99 67<br />
+                        {SITE_CONFIG.supportTel}<br />
                       </p>
                     </div>
                   </div>
@@ -289,7 +291,7 @@ export default function HomePage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">Email</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        info@eureka-residences.com
+                        {SITE_CONFIG.supportMailInfo}
                       </p>
                     </div>
                   </div>

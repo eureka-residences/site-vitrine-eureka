@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import SITE_CONFIG from '@site-config';
 
 const footerSections = {
   'Résidences': [
@@ -23,15 +24,15 @@ const footerSections = {
 };
 
 const socialLinks = [
-  { icon: <Facebook className="w-5 h-5" />, url: 'https://facebook.com' },
-  { icon: <Twitter className="w-5 h-5" />, url: 'https://twitter.com' },
-  { icon: <Instagram className="w-5 h-5" />, url: 'https://instagram.com' },
-  { icon: <Linkedin className="w-5 h-5" />, url: 'https://linkedin.com' }
+  { icon: <Facebook className="w-5 h-5" />, url: SITE_CONFIG.links.facebook },
+  { icon: <Twitter className="w-5 h-5" />, url: SITE_CONFIG.links.twitter },
+  { icon: <Instagram className="w-5 h-5" />, url: SITE_CONFIG.links.instagram },
+  { icon: <Linkedin className="w-5 h-5" />, url: SITE_CONFIG.links.linkedin }
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="dark:bg-gray-900 bg-gray-100 dark:text-gray-300 text-gray-700">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -48,11 +49,11 @@ export default function Footer() {
               </p>
               <p className="flex items-center">
                 <Phone className="w-5 h-5 mr-2 text-[#F7BF57]" />
-                +237 699 81 23 45
+                {SITE_CONFIG.supportTel}
               </p>
               <p className="flex items-center">
                 <Mail className="w-5 h-5 mr-2 text-[#F7BF57]" />
-                contact@eureka-residences.fr
+                {SITE_CONFIG.supportMailInfo}
               </p>
             </div>
           </div>
@@ -60,7 +61,7 @@ export default function Footer() {
           {/* Navigation Sections */}
           {Object.entries(footerSections).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
+              <h3 className="text-lg font-semibold dark:text-white mb-4">{title}</h3>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.path}>
@@ -78,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Social Links */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-12 pt-8 border-t border-gray-300 dark:border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
               {socialLinks.map((social, index) => (

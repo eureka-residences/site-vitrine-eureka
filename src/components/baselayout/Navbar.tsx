@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, ChevronDown, Home, Building, Coffee, CalendarCheck, ClipboardList, Phone, Info, ChevronRight } from 'lucide-react';
+import { Menu, ChevronDown, Home, Building, Coffee, CalendarCheck, ClipboardList, Phone, Info, ChevronRight, UserRound } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
-import logoImage from '../assets/images/logo-eureka-97x160.png';
+import ThemeToggle from '../ThemeToggle';
+import logoImage from '@images/logo-eureka-97x160.png';
 
 // Images pour les menus
 const residenceImage = "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
@@ -142,22 +142,8 @@ export default function Navbar() {
       ]
     },
     {
-      to: '/reservation',
-      label: 'Réserver',
-      icon: <CalendarCheck size={18} />,
-      image: reservationImage,
-      // children: [
-      //   {
-      //     to: '/reservation/logement',
-      //     label: 'Réserver un logement',
-      //     description: 'Trouvez et réservez votre futur logement',
-      //   },
-      //   {
-      //     to: '/reservation/visite',
-      //     label: 'Planifier une visite',
-      //     description: 'Venez visiter nos résidences',
-      //   }
-      // ]
+      to: '/boutique',
+      label: 'Boutique',
     },
     {
       to: '/contact',
@@ -410,13 +396,19 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <NavLink key={index} item={item} />
             ))}
+            <Link
+              to='/login'
+              className='rounded-lg p-2 hover:bg-gray-200 hover:dark:bg-gray-700'
+            >
+              <UserRound className='text-gray-600 dark:text-gray-200' />
+            </Link>
             <ThemeToggle />
             <Link
               to="/reservation"
               className="bg-[#F7BF57] text-white px-4 py-2 rounded-md hover:bg-[#D9BEA3] transition-colors flex items-center gap-2"
             >
               <CalendarCheck size={18} />
-              <span>Pré-réserver</span>
+              <span>Réserver</span>
             </Link>
           </div>
 
@@ -447,7 +439,7 @@ export default function Navbar() {
                   to="/reservation"
                   className="block w-full text-center bg-[#F7BF57] text-white px-4 py-3 rounded-md hover:bg-[#D9BEA3] transition-colors"
                 >
-                  Pré-réserver
+                  Réserver
                 </Link>
               </div>
             </div>

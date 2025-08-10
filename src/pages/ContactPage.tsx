@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, ChevronRight, Check, AlertTriangle } from 'lucide-react';
-import PageBanner from '../components/PageBanner';
+import PageBanner from '@components/PageBanner';
+import SITE_CONFIG from '@site-config';
 
 // Exemple d'image pour la page de contact
 const contactImage = "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
@@ -84,20 +85,20 @@ const ContactPage = () => {
     { 
       title: "Email",
       icon: <Mail className="h-6 w-6 text-[#F7BF57]" />,
-      content: "contact@eureka-residences.com",
+      content: SITE_CONFIG.supportMailContact,
       action: {
         label: "Nous écrire",
-        href: "mailto:contact@eureka-residences.com",
+        href: "mailto:"+SITE_CONFIG.supportMailInfo,
         external: true
       }
     },
     { 
       title: "Téléphone",
       icon: <Phone className="h-6 w-6 text-[#F7BF57]" />,
-      content: "+237 699 81 23 45",
+      content: SITE_CONFIG.supportTel,
       action: {
         label: "Nous appeler",
-        href: "tel:+237 699 81 23 45",
+        href: "tel:"+SITE_CONFIG.supportTel,
         external: true
       }
     },
@@ -176,7 +177,7 @@ const ContactPage = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
+                          className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent ${
                             errors.name ? 'border-red-500 dark:border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="Jean Dupont"
@@ -196,7 +197,7 @@ const ContactPage = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
+                          className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent ${
                             errors.email ? 'border-red-500 dark:border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="email@exemple.com"
@@ -216,7 +217,7 @@ const ContactPage = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
                           placeholder="+237 XX XX XX XX"
                         />
                       </div>
@@ -230,7 +231,7 @@ const ContactPage = () => {
                           name="residenceInterest"
                           value={formData.residenceInterest}
                           onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent"
                         >
                           <option value="aucune">Aucune en particulier</option>
                           <option value="residence-eureka">Résidence Eureka</option>
@@ -249,7 +250,7 @@ const ContactPage = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
+                        className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent ${
                           errors.subject ? 'border-red-500 dark:border-red-500' : 'border-gray-300'
                         }`}
                       >
@@ -274,7 +275,7 @@ const ContactPage = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
+                        className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F7BF57] focus:border-transparent ${
                           errors.message ? 'border-red-500 dark:border-red-500' : 'border-gray-300'
                         }`}
                         placeholder="Écrivez votre message ici..."

@@ -6,17 +6,25 @@
 /* Dark mode transition */
 :root {
     color-scheme: light dark;
+}
+
+body {
+  transition: background-color 0.3s ease;
+}
+
+/* Ensure dark mode text is readable */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply text-gray-100;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
-  
-  body {
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Ensure dark mode text is readable */
-  .dark {
-    color-scheme: dark;
-  }
-  
-  .dark body {
-    @apply text-gray-100;
-  }
+}
