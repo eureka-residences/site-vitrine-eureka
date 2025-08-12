@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { mockAuthAPI } from '@features/authentication/services/mockAutchAPI';
-import { ICredentials } from '@features/authentication/types';
+import { mockAuthAPI } from '@features/eurekanet/mockAutchAPI';
+import { ICredentials } from '@features/eurekanet/types';
 
 
 export default function LoginForm() {
@@ -79,12 +79,14 @@ export default function LoginForm() {
 	/*************** RENDER ****************/
 	
 	return (
-	<div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+	<div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 		<div className="bg-white dark:bg-gray-800 max-w-md w-full space-y-8 p-8 rounded-lg shadow-md">
 			<div className="text-center">
 				<h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-6 text-3xl">
 				Connexion
 				</h2>
+
+				<h3 className="text-gray-600 dark:text-gray-400 mt-3">Accéder à l'espace résident Eurekanet !</h3>
 			</div>
 
 			{authError && (

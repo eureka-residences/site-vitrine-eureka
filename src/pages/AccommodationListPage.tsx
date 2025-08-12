@@ -163,19 +163,24 @@ export default function AccommodationListPage() {
             >
               {/* Image du logement */}
               <div className="relative h-48">
-                <img 
-                  src={accommodation.imageUrl} 
-                  alt={accommodation.name} 
-                  className="w-full h-full object-cover"
-                />
-                {/* Badge de disponibilité */}
-                <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium ${
-                  accommodation.available 
+                <Link
+                  to={`/logements/${accommodation.id}`}
+                  className="text-[#F7BF57] hover:text-[#e6af4a] text-sm font-medium"
+                >
+                  <img 
+                    src={accommodation.imageUrl} 
+                    alt={accommodation.name} 
+                    className="w-full h-full object-cover"
+                    />
+                  {/* Badge de disponibilité */}
+                  <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium ${
+                    accommodation.available 
                     ? 'bg-green-100 text-green-800 dark:bg-green-900/60 dark:text-green-200'
                     : 'bg-red-100 text-red-800 dark:bg-red-900/60 dark:text-red-200'
-                }`}>
-                  {accommodation.available ? 'Disponible' : 'Liste d\'attente'}
-                </div>
+                  }`}>
+                    {accommodation.available ? 'Disponible' : 'Liste d\'attente'}
+                  </div>
+                </Link>
               </div>
               
               {/* Contenu */}

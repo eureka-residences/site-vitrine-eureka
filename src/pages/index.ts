@@ -8,10 +8,10 @@ import ServicesPage from './ServicesPage';
 import ContactPage from './ContactPage';
 import AccommodationListPage from './AccommodationListPage';
 import AccommodationDetailPage from './AccommodationDetailPage';
-import PaymentProcessPage from './PaymentProcessPage';
-import ShopPage from './ShopPage';
-import LoginPage from './LoginPage';
-import UserAccountPage from './UserAccountPage';
+import PaymentProcessPage from '../features/eurekashop/pages/PaymentProcessPage';
+import ShopPage from '../features/eurekashop/pages/ShopPage';
+import LoginPage from '../features/eurekanet/pages/LoginPage';
+import UserAccountPage from '../features/eurekanet/pages/UserAccountPage';
 
 
 

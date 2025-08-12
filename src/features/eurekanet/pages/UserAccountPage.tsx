@@ -1,12 +1,36 @@
 import { useState } from 'react';
-import { User, FileText, Settings, AlertCircle, Clock, CheckCircle, XCircle, Calendar, Download, Eye, Edit2, Save, X, Phone, Lock, CreditCard, Wrench, DoorOpen, Flame, Lightbulb, Droplets, Wifi, Thermometer, Shield } from 'lucide-react';
+import { 
+    FileText, 
+    Settings, 
+    AlertCircle, 
+    Clock, 
+    CheckCircle, 
+    XCircle, 
+    Calendar, 
+    Download, 
+    Eye, 
+    Edit2, 
+    Save,
+    X, 
+    Phone, 
+    Lock, 
+    CreditCard, 
+    Wrench, 
+    DoorOpen, 
+    Lightbulb, 
+    Droplets, 
+    Wifi, 
+    Thermometer, 
+    Shield 
+} from 'lucide-react';
 import { 
     TPriority, 
     TProcessStatus, 
     IDocument,
     TIncidentCategory,
-} from '@features/userprofile/types';
+} from '@features/eurekanet/types';
 import pdf from '@assets/ERK_LISTE_DES_COURSES_ETUDIANTS.pdf';
+import PageBanner from '@components/PageBanner';
 
 
 export default function UserAccountPage() {
@@ -15,9 +39,9 @@ export default function UserAccountPage() {
     const [editingInfo, setEditingInfo] = useState(false);
     const [userInfo, setUserInfo] = useState({
         name: 'Eru Eru Pita',
-        studentId: 'ETU2024001',
+        studentId: 'EUREKA-N7',
         phone: '+237 6 75 84 92 13',
-        residence: 'Résidence Les Palmiers - Chambre 205',
+        residence: 'Résidence Eureka - Chambre 7, Etage 1',
         monthlyBudget: 75000,
     });
 
@@ -118,7 +142,7 @@ export default function UserAccountPage() {
     /*************** DATA ****************/
     
     const tabs = [
-        { id: 'demandes', label: 'Mes Demandes', icon: AlertCircle },
+        { id: 'demandes', label: 'Mes Signalements', icon: AlertCircle },
         { id: 'documents', label: 'Mes Documents', icon: FileText },
         { id: 'profil', label: 'Informations Personnelles', icon: Settings }
     ];
@@ -235,8 +259,13 @@ export default function UserAccountPage() {
     /*************** RENDER ****************/
 
     return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen py-24">
-        <div className="max-w-6xl mx-auto px-4">
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
+        <PageBanner 
+            title="EUREKANET" 
+            subtitle="Bienvenue dans votre espace résident !"
+        />
+
+        <div className="max-w-6xl mx-auto px-4 py-24">
 
         {/* En-tête du profil */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8">
@@ -468,10 +497,10 @@ export default function UserAccountPage() {
                             type="text"
                             value={tempUserInfo.name}
                             onChange={(e) => setTempUserInfo({...tempUserInfo, name: e.target.value})}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="text-gray-600 dark:bg-gray-700 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                         ) : (
-                        <p className="px-3 py-2 dark:bg-gray-700 dark:border-gray-600 border border-gray-200 rounded-lg">
+                        <p className="text-gray-600 dark:bg-gray-700 px-3 py-2 dark:bg-gray-700 dark:border-gray-600 border border-gray-200 rounded-lg">
                             {userInfo.name}
                         </p>
                         )}
@@ -496,10 +525,10 @@ export default function UserAccountPage() {
                             type="tel"
                             value={tempUserInfo.phone}
                             onChange={(e) => setTempUserInfo({...tempUserInfo, phone: e.target.value})}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="text-gray-600 dark:bg-gray-700 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                         ) : (
-                        <p className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600">
+                        <p className="text-gray-600 dark:bg-gray-700 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600">
                             {userInfo.phone}
                         </p>
                         )}
@@ -529,12 +558,12 @@ export default function UserAccountPage() {
                             type="number"
                             value={tempUserInfo.monthlyBudget}
                             onChange={(e) => setTempUserInfo({...tempUserInfo, monthlyBudget: parseInt(e.target.value)})}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="text-gray-600 dark:bg-gray-700 flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             />
-                            <span className="text-gray-600">FCFA</span>
+                            <span className="text-gray-600 dark:bg-gray-700">FCFA</span>
                         </div>
                         ) : (
-                        <p className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600">
+                        <p className="text-gray-600 dark:bg-gray-700 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600">
                             {userInfo.monthlyBudget.toLocaleString()} FCFA
                         </p>
                         )}

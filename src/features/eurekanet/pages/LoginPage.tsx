@@ -1,8 +1,8 @@
-import LoginForm from "@features/authentication/components/LoginForm";
+import LoginForm from "@features/eurekanet/components/LoginForm";
 
 export default function LoginPage() {
     return (
-        <div className="">
+        <div>
             <LoginForm />
         </div>
     );

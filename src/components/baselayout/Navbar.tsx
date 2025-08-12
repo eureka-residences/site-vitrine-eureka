@@ -104,43 +104,43 @@ export default function Navbar() {
     },
 
     
-    {
-      to: '/services',
-      label: 'Services',
-      icon: <Coffee size={18} />,
-      image: servicesImage,
-      children: [
-        {
-          to: '/services/restauration',
-          label: 'Restauration',
-          description: 'Découvrez notre service de restauration sur place',
-          subItems: [
-            { to: '/services/restauration/cafeteria', label: 'Cafétéria' },
-            { to: '/services/restauration/restaurant', label: 'Restaurant' }
-          ]
-        },
-        {
-          to: '/services/salles-etudes',
-          label: 'Espaces d\'étude',
-          description: 'Espaces de travail calmes et équipés',
-          subItems: [
-            { to: '/services/salles-etudes/bibliotheque', label: 'Bibliothèque' },
-            { to: '/services/salles-etudes/salles-travail', label: 'Salles de travail' },
-            { to: '/services/salles-etudes/espace-coworking', label: 'Espace coworking' }
-          ]
-        },
-        {
-          to: '/services/loisirs',
-          label: 'Loisirs',
-          description: 'Activités et divertissements proposés',
-          subItems: [
-            { to: '/services/loisirs/salle-sport', label: 'Salle de sport' },
-            { to: '/services/loisirs/espace-detente', label: 'Espace détente' },
-            { to: '/services/loisirs/activites', label: 'Activités organisées' }
-          ]
-        }
-      ]
-    },
+    // {
+    //   to: '/services',
+    //   label: 'Services',
+    //   icon: <Coffee size={18} />,
+    //   image: servicesImage,
+    //   children: [
+    //     {
+    //       to: '/services/restauration',
+    //       label: 'Restauration',
+    //       description: 'Découvrez notre service de restauration sur place',
+    //       subItems: [
+    //         { to: '/services/restauration/cafeteria', label: 'Cafétéria' },
+    //         { to: '/services/restauration/restaurant', label: 'Restaurant' }
+    //       ]
+    //     },
+    //     {
+    //       to: '/services/salles-etudes',
+    //       label: 'Espaces d\'étude',
+    //       description: 'Espaces de travail calmes et équipés',
+    //       subItems: [
+    //         { to: '/services/salles-etudes/bibliotheque', label: 'Bibliothèque' },
+    //         { to: '/services/salles-etudes/salles-travail', label: 'Salles de travail' },
+    //         { to: '/services/salles-etudes/espace-coworking', label: 'Espace coworking' }
+    //       ]
+    //     },
+    //     {
+    //       to: '/services/loisirs',
+    //       label: 'Loisirs',
+    //       description: 'Activités et divertissements proposés',
+    //       subItems: [
+    //         { to: '/services/loisirs/salle-sport', label: 'Salle de sport' },
+    //         { to: '/services/loisirs/espace-detente', label: 'Espace détente' },
+    //         { to: '/services/loisirs/activites', label: 'Activités organisées' }
+    //       ]
+    //     }
+    //   ]
+    // },
     {
       to: '/boutique',
       label: 'Boutique',

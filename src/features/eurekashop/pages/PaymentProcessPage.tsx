@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PageBanner from '@components/PageBanner';
 import Switcher from '@components/Switcher';
 import ERK_LOGOS_IMG from '@utils/logos.data';
-import PaymentMethodSelector from '@features/payment/components/PaymentMethodSelector';
+
+import PaymentMethodSelector from '@features/eurekashop/components/PaymentMethodSelector';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 
 

@@ -152,3 +152,29 @@ export interface IRoom {
   /* Image url of the room */
   imageUrl?: string,
 }
+
+export interface IProduct {
+  /* ID of the product */
+  id : string,
+
+  /* Price of the room */
+  price: number,
+
+  /* Minimum quantity of the product */
+  qtyMin: number,
+
+  /* Maximal quantity of the product */
+  qtyMax: number,
+
+  /* Name of the product */
+  name: string,
+
+  /* Image URL of the product */
+  imageUrl: string,
+
+  /* Short description of the product */
+  shortDescription?: string,
+
+  /* Mains features of the product */
+  feature?: string,
+}

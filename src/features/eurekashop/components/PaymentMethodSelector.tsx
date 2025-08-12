@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Phone } from 'lucide-react';
-import { IPaymentMethod, IPaymentMethodMinimal } from '../types';
+import { IPaymentMethod, IPaymentMethodMinimal } from '@features/eurekashop/types';
 
 interface IPaymentMethodSelectorProps {
     onPaymentChange: (pmm: IPaymentMethodMinimal) => void
@@ -34,7 +34,7 @@ export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMetho
             color: 'from-yellow-500 to-yellow-600',
             bgColor: 'bg-yellow-50 border-yellow-200',
             selectedBg: 'bg-yellow-100 border-yellow-500',
-            prefix: '+237 67'
+            prefix: '+237 6'
         },
         {
             id: 'cash',
