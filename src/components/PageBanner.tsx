@@ -33,7 +33,7 @@ export default function PageBanner({ title, subtitle }: PageBannerProps) {
               <li key={segment} className="flex items-center">
                 <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500 mx-2" />
                 {index === pathSegments.length - 1 ? (
-                  <span className="text-gray-700 dark:text-gray-200 font-medium">
+                  <span className="text-gray-700 dark:text-gray-200 font-medium capitalize">
                     {routeNames[segment] || segment}
                   </span>
                 ) : (

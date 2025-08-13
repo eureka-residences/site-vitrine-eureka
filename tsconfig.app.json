@@ -18,7 +18,32 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Basic */
+    "allowJs": true,
+    
+    /* Code runs in the DOM */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    
+    /* Others */
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    
+    /* Paths */
+    "paths": {
+      "@": ["./src"],
+      "@images": ["./src/assets/images"],
+      "@site-config": ["./src/site.config.ts"],
+      "@components": ["./src/components"],
+      "@baselayout": ["./src/components/baselayout"],
+      "@types": ["./src/types"],
+      "@pages": ["./src/pages"],
+      "@utils": ["./src/utils"],
+      "@assets": ["./src/assets"],
+      "@features": ["./src/features"],
+    }
   },
-  "include": ["src"]
+  //"include": ["src"],
+  "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist", "public/scripts/*", "test/*"]
 }
