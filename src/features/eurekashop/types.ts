@@ -34,6 +34,10 @@ export interface IProduct {
     feature?: string,
 }
 
+export interface IProductList {
+    [productId: string]: number; // productId -> quantity
+}
+
 export interface IPaymentMethod {
     id: string,
     name: string,
@@ -48,4 +52,25 @@ export interface IPaymentMethod {
 export interface IPaymentMethodMinimal {
     method: string,
     phoneNumber: string,
+}
+
+export interface IERKShopContext {
+    // States
+
+    /*.....................................................................
+	HashMap to store selected products : { productId : quantity }
+	.....................................................................*/
+    selectedProducts: Record<string, number>;
+    
+    // Actions
+    addProduct: (productId: string, quantity?: number) => void;
+    removeProduct: (productId: string) => void;
+    updateProductQuantity: (productId: string, quantity: number) => void;
+    clearShoppingList: () => void;   
+    
+    // Getters
+    getTotalUniqueItems: () => number;
+    getTotalQuantity: () => number;
+    getProductQuantity: (productId: string) => number;
+    isProductInShoppingList: (productId: string) => boolean;
 }

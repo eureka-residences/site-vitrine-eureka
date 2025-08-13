@@ -4,82 +4,44 @@ import PageBanner from '@components/PageBanner';
 import { ShopSidebar, ShoppingList, QuantitySelector } from '@features/eurekashop/components';  
 import { STATIC_PRODUCTS_MAP } from '@features/eurekashop/static.data';
 import { IProduct } from '@features/eurekashop/types';
+import { ERK_LOG, LogCategory } from '@utils/logger';
+import { useERKShop } from '@features/eurekashop/hooks';
 
 
 export default function ShopPage() {
-    /*************** STATES ****************/
+    // =============== CONTEXT ===============
+
+    const { addProduct } = useERKShop();
+
+    // =============== LOCAL STATES ===============
     
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
-
-    // HashMap to store selected products : { productId : quantity }
-    const [selectedProductList, setSelectedProductList] = useState<Record<string, number>>({});
     
-    // For tracking quantity of each product before adding to the list
-    const [productQuantities, setProductQuantities] = useState<Record<string, number>>({});
-    
-    /*************** HANDLERS ****************/
+    // =============== HANLDERS ===============
 
     const handleSearch = (term: string) => {
         setSearchTerm(term);
-        console.log('Recherche:', term);
+
+        ERK_LOG(LogCategory.DEBUG, `Recherche: ${term}`);
     };
 
     const handleFilters = (filters: string[]) => {
         setActiveFilters(filters);
-        console.log('Filtres actifs:', filters);
+
+        ERK_LOG(LogCategory.DEBUG, `Filtres actifs : ${filters}`);
     };
     
-    const handleOnQuantityChange = (productId: string, qty: number, bFromShoppingList: boolean = false) => {
-        setProductQuantities(prev => ({
-            ...prev,
-            [productId]: qty
-        }));
+    const handleOnAddButtonClick = (productID: string, qty: number) => {
+        // Retrieves quantity from the context
+        const quantityToAdd = qty || 1;
+        addProduct(productID, quantityToAdd);
 
-        if (bFromShoppingList){    
-            setSelectedProductList(prev => ({
-                ...prev,
-                [productId]: qty
-            }));
-        }
+        ERK_LOG(LogCategory.DEBUG, `Produit ${productID} ajouté avec quantité ${quantityToAdd}`);
     }
 
-    const handleOnAddButtonClick = (productID: string, qty?: number) => {
-        // Retrieves quantity from the state or from parameters
-        const quantityToAdd = qty || productQuantities[productID] || 1;
-
-        setSelectedProductList(prev => {
-            const currentQuantity = prev[productID] || 0;
-            const newQuantity = currentQuantity + quantityToAdd;
-
-            return {
-                ...prev,
-                [productID]: newQuantity,
-            };
-
-        });
-
-        // [Optional] : reset quantity after adding
-        setProductQuantities(prev => ({
-            ...prev,
-            [productID]: 1
-        }));
-
-        console.log(`Produit ${productID} ajouté avec quantité ${quantityToAdd}`);
-    }
-
-    const handleRemoveProduct = (productID: string) => {
-        setSelectedProductList(prev => {
-            const newProductList = {...prev};
-            delete newProductList[productID];
-            return newProductList;
-        });
-
-        console.log(`Produit ${productID} supprimé de la liste`);
-    }
-
-
+    // =============== RENDER ===============
 
     return (
         <div className="bg-white dark:bg-gray-900 min-h-screen">
@@ -102,7 +64,7 @@ export default function ShopPage() {
 
 
                 <div className="lg:col-span-6">
-                    {/* Informations sur la recherche et filtres actifs */}
+                    {/* Search information and active filters */}
                     <div className="col-span-3">
                         {searchTerm && (
                         <p className="text-gray-600 mb-2">
@@ -124,25 +86,28 @@ export default function ShopPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     {/* Product card */}
-                    {Object.values(STATIC_PRODUCTS_MAP).map((product: IProduct, i: number) => (activeFilters.length === 0 || activeFilters.includes(product.category)) && (
+                    {Object.values(STATIC_PRODUCTS_MAP).map((product: IProduct, i: number) => {
+                        const [quantity, setQuantity] = useState(/* intial quantity */1);
+                        
+                        return (activeFilters.length === 0 || activeFilters.includes(product.category)) && (
                         <div key={`product-${i}`} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-lg p-4 hover:shadow-md transition-shadow">
                             <div className="w-full h-32 bg-gray-200 rounded-lg mb-3"></div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">{product.name}</h3>
                             <p className="text-sm text-gray-600 mb-2">{product.shortDescription}</p>
-                            <p className="text-[#F7BF57] font-bold">2,500 FCFA</p>
+                            <p className="text-[#F7BF57] font-bold">{product.price} F.CFA</p>
 
                             <div className="border-t border-gray-200 dark:border-gray-700 pt-4 my-5">
                                 <div className="flex justify-between">
                                     <QuantitySelector
                                         productID={product.id}
-                                        initialQuantity={1} 
-                                        min={product.qtyMin} 
-                                        max={product.qtyMax} 
-                                        onQuantityChange={handleOnQuantityChange} 
+                                        min={product.qtyMin}
+                                        max={product.qtyMax}
+                                        quantity={quantity}
+                                        setQuantity={setQuantity}
                                     />
             
                                     <button
-                                        onClick={() => handleOnAddButtonClick(product.id, productQuantities[product.id])}
+                                        onClick={() => handleOnAddButtonClick(product.id, quantity)}
                                         className="bg-[#F7BF57] hover:bg-[#e6af4a] text-white px-4 py-2 rounded-md text-sm transition-colors"
                                     >
                                         Ajouter
@@ -150,16 +115,14 @@ export default function ShopPage() {
                                 </div>
                             </div>
                         </div>
-                    ))}
+                        ); 
+                        })
+                    }
 
                     </div>
 
                     
-                    <ShoppingList 
-                        productIDList={selectedProductList}
-                        handleRemoveProduct={handleRemoveProduct}
-                        handleOnQuantityChange={handleOnQuantityChange}
-                    />
+                    <ShoppingList />
                 </div>
             </div>
         </div>

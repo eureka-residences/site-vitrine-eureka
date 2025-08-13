@@ -1,18 +1,41 @@
 import React, { useState } from 'react';
+import { Minus, Plus, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import PageBanner from '@components/PageBanner';
 import Switcher from '@components/Switcher';
-import ERK_LOGOS_IMG from '@utils/logos.data';
 
 import PaymentMethodSelector from '@features/eurekashop/components/PaymentMethodSelector';
-import { Minus, Plus, Trash2 } from 'lucide-react';
-
+import { useERKShop } from '@features/eurekashop/hooks';
+import { IProduct } from '@features/eurekashop/types';
+import { STATIC_PRODUCTS_MAP } from '@features/eurekashop/static.data';
 
 
 export default function PaymentProcessPage() {
+    // =============== CONTEXT ===============
+    
+    const { 
+        selectedProducts,
+        removeProduct,
+        updateProductQuantity
+    } = useERKShop();
+    
+    // =============== DATA ===============
+
+    // Selected product list [product0, product1, ...]
+    const shoppingList = Object.keys(selectedProducts).map((key: string) => STATIC_PRODUCTS_MAP[key]);
+
+    // Total price
+    const totalPrice = shoppingList.reduce((accTotal: number, currProd: IProduct) => accTotal + currProd.price * selectedProducts[currProd.id], /* initialValue= */0);
+    
+    
+    // =============== LOCAL STATES ===============
+    
     const [step, setStep] = useState<number>(1);
-
+    
     const [reservationNumber, setReservationNumber] = useState<string>('');
-
+    
+    const [isSwitcherOn, setIsSwitcherOn] = useState(false);
+    
     const [formData, setFormData] = useState({
         studentName: '',
         parentName: '',
@@ -20,7 +43,9 @@ export default function PaymentProcessPage() {
         phone: '',
         accommodationType: ''
     });
-
+    
+    // =============== HANDLERS ===============
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Generate a random reservation number
@@ -35,62 +60,6 @@ export default function PaymentProcessPage() {
         ...prev,
         [name]: value
         }));
-    };
-
-    const [isSwitcherOn, setIsSwitcherOn] = useState(false);
-
-    const shoppingList = [
-        {
-            id: 1,
-            name: "T-Shirt Premium",
-            price: 29.99,
-            quantity: 2,
-            imageUrl: "https://via.placeholder.com/60x60/3B82F6/FFFFFF?text=TS"
-        },
-        {
-            id: 2,
-            name: "Jean Slim",
-            price: 79.99,
-            quantity: 1,
-            imageUrl: "https://via.placeholder.com/60x60/10B981/FFFFFF?text=J"
-        },
-        {
-            id: 3,
-            name: "Baskets Running",
-            price: 119.99,
-            quantity: 1,
-            imageUrl: "https://via.placeholder.com/60x60/F59E0B/FFFFFF?text=B"
-        },
-        {
-            id: 4,
-            name: "Baskets Running",
-            price: 119.99,
-            quantity: 1,
-            imageUrl: "https://via.placeholder.com/60x60/F59E0B/FFFFFF?text=B"
-        },
-        {
-            id: 5,
-            name: "Baskets Running",
-            price: 119.99,
-            quantity: 1,
-            imageUrl: "https://via.placeholder.com/60x60/F59E0B/FFFFFF?text=B"
-        }
-    ];
-
-    const [items, setItems] = useState(shoppingList);
-
-    const removeItem = (id: number) => {
-        setItems(items.filter(item => item.id !== id));
-    };
-
-    const updateQuantity = (id: number, newQuantity: number) => {
-        if (newQuantity === 0) {
-            removeItem(id);
-        } else {
-            setItems(items.map(item => 
-            item.id === id ? { ...item, quantity: newQuantity } : item
-            ));
-        }
     };
 
     return (
@@ -223,13 +192,12 @@ export default function PaymentProcessPage() {
                                     </div>
                             
                                     <div className="flex justify-between pt-4">
-                                    <button
-                                        type="button"
-                                        onClick={() => setStep(1)}
+                                    <Link
+                                        to='/boutique'
                                         className="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                                     >
                                         Retour
-                                    </button>
+                                    </Link>
                                     <button
                                         type="submit"
                                         onClick={()=> setStep(2)}
@@ -264,23 +232,23 @@ export default function PaymentProcessPage() {
                                         
                                         <div className="flex items-center space-x-2">
                                             <button
-                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                            onClick={() => updateProductQuantity(item.id, selectedProducts[item.id] - 1)}
                                             className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
                                             >
                                             <Minus size={16} className="text-gray-600" />
                                             </button>
                                             
-                                            <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
+                                            <span className="w-8 text-center text-sm font-medium">{selectedProducts[item.id]}</span>
                                             
                                             <button
-                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                            onClick={() => updateProductQuantity(item.id, selectedProducts[item.id] + 1)}
                                             className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
                                             >
                                             <Plus size={16} className="text-gray-600" />
                                             </button>
                                             
                                             <button
-                                            onClick={() => removeItem(item.id)}
+                                            onClick={() => removeProduct(item.id)}
                                             className="p-1 hover:bg-red-100 rounded transition-colors duration-200 ml-2"
                                             >
                                             <Trash2 size={16} className="text-red-500" />
@@ -295,7 +263,7 @@ export default function PaymentProcessPage() {
                                         <div className='flex justify-between border-t border-gray-100 dark:border-gray-700 pt-4'>
                                             <span>Prix des articles</span>
 
-                                            <span>6500 F.CFA</span>
+                                            <span>{totalPrice} F.CFA</span>
                                         </div>
 
                                         <div className='flex justify-between'>

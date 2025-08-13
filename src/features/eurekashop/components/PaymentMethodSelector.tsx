@@ -38,8 +38,8 @@ export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMetho
         },
         {
             id: 'cash',
-            name: 'En main propre',
-            description: 'Paiement à la livraison',
+            name: 'En espèce',
+            description: 'Paiement en main propre',
             icon: '🤝',
             color: 'from-green-500 to-green-600',
             bgColor: 'bg-green-50 border-green-200',

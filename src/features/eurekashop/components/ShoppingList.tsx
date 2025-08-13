@@ -3,30 +3,34 @@ import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { STATIC_PRODUCTS_MAP } from '@features/eurekashop/static.data';
 import { IProduct } from '@features/eurekashop/types';
+import { useERKShop } from '@features/eurekashop/hooks';
 
-interface IShoppingListProps {
-  productIDList: Record<string, number>,
-  handleRemoveProduct: (productID: string) => void,
-  handleOnQuantityChange: (productID: string, qty: number, bFromShoppingList: boolean) => void
-}
 
-export default function ShoppingList({ productIDList, handleRemoveProduct, handleOnQuantityChange }: IShoppingListProps) {
-    /**************** STATE ****************/
+export default function ShoppingList() {
+    // =============== CONTEXT ===============
+
+    const { 
+        selectedProducts, 
+        getTotalUniqueItems,
+        removeProduct,
+        updateProductQuantity
+    } = useERKShop();
+    
+    // =============== LOCAL STATES ===============
   
     const [isOpen, setIsOpen] = useState(false);
 
-    /**************** DATA ****************/
+    // =============== DATA ===============
 
-    // Number of product (distinct)
-    const productCount = Object.keys(productIDList).length;
+    const productCount = getTotalUniqueItems();
     
-    // Selected product list
-    const products = Object.keys(productIDList).map((key: string) => STATIC_PRODUCTS_MAP[key]);
+    // Selected product list [product0, product1, ...]
+    const products = Object.keys(selectedProducts).map((key: string) => STATIC_PRODUCTS_MAP[key]);
 
-    // Prix total
-    const totalPrice = products.reduce((accTotal: number, currProd: IProduct) => accTotal + currProd.price * productIDList[currProd.id], /* initialValue= */0);
+    // Total price
+    const totalPrice = products.reduce((accTotal: number, currProd: IProduct) => accTotal + currProd.price * selectedProducts[currProd.id], /* initialValue= */0);
 
-    /**************** HANDLERS ****************/
+    // =============== HANLDERS ===============
 
     // Fermer avec Escape
     useEffect(() => {
@@ -47,20 +51,20 @@ export default function ShoppingList({ productIDList, handleRemoveProduct, handl
         };
     }, [isOpen]);
 
-    const updateQuantity = (id: string, newQuantity: number) => {
-        if (newQuantity === 0) {
-            handleRemoveProduct(id);
-        } else {
-            handleOnQuantityChange(id, newQuantity, true);
-        }
+    const handleRemove = (id: string) => {
+        removeProduct(id);
+    }
+
+    const handleQuantityChange = (id: string, newQuantity: number) => {
+        updateProductQuantity(id, newQuantity);
     };
 
     const clearList = () => {
-        for (let productID in productIDList)
-            handleRemoveProduct(productID);
+        for (let productID in selectedProducts)
+            handleRemove(productID);
     };
 
-    /**************** COMPONENTS ****************/
+    // =============== COMPONENTS ===============
 
     const ShoppingListButton = () => (
         <div className="fixed bottom-6 right-6 z-50">
@@ -81,7 +85,7 @@ export default function ShoppingList({ productIDList, handleRemoveProduct, handl
         </div>
     );
 
-    /**************** RENDER ****************/
+    // =============== RENDER ===============
 
     return (
     <div>
@@ -143,23 +147,23 @@ export default function ShoppingList({ productIDList, handleRemoveProduct, handl
                             
                             <div className="flex items-center space-x-2">
                                 <button
-                                onClick={() => updateQuantity(product.id, productIDList[product.id] - 1)}
+                                onClick={() => handleQuantityChange(product.id, selectedProducts[product.id] - 1)}
                                 className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
                                 >
                                     <Minus size={16} className="text-gray-600" />
                                 </button>
                                 
-                                <span className="w-8 text-center text-sm font-medium text-gray-800 dark:text-gray-200">{productIDList[product.id]}</span>
+                                <span className="w-8 text-center text-sm font-medium text-gray-800 dark:text-gray-200">{selectedProducts[product.id]}</span>
                                 
                                 <button
-                                onClick={() => updateQuantity(product.id, productIDList[product.id] + 1)}
+                                onClick={() => handleQuantityChange(product.id, selectedProducts[product.id] + 1)}
                                 className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
                                 >
                                     <Plus size={16} className="text-gray-600" />
                                 </button>
                                 
                                 <button
-                                onClick={() => handleRemoveProduct(product.id)}
+                                onClick={() => handleRemove(product.id)}
                                 className="p-1 hover:bg-red-100 rounded transition-colors duration-200 ml-2"
                                 >
                                     <Trash2 size={16} className="text-red-500" />
