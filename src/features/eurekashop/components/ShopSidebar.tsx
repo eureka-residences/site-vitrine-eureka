@@ -119,10 +119,10 @@ export default function ShopSidebar({
   return (
     <>
       {/* Overlay mobile */}
-      <div 
+      {/* <div 
         className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
         onClick={onToggle}
-      />
+      /> */}
       
       {/* Sidebar */}
       <div>

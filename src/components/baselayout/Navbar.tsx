@@ -141,10 +141,10 @@ export default function Navbar() {
     //     }
     //   ]
     // },
-    {
-      to: '/boutique',
-      label: 'Boutique',
-    },
+    // {
+    //   to: '/boutique',
+    //   label: 'Boutique',
+    // },
     {
       to: '/contact',
       label: 'Contact',
@@ -396,12 +396,12 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <NavLink key={index} item={item} />
             ))}
-            <Link
+            {/* <Link
               to='/login'
               className='rounded-lg p-2 hover:bg-gray-200 hover:dark:bg-gray-700'
             >
               <UserRound className='text-gray-600 dark:text-gray-200' />
-            </Link>
+            </Link> */}
             <ThemeToggle />
             <Link
               to="/reservation"
