@@ -15,6 +15,7 @@ import {
     ChevronUp, 
     X, 
 } from 'lucide-react';
+import SITE_CONFIG from '@site-config';
 
 
 
@@ -321,7 +322,7 @@ export default function ShopSidebar({
                     <Phone size={16} className="text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-800">Téléphone</p>
-                      <p className="text-sm text-gray-600">+237 6 XX XX XX XX</p>
+                      <p className="text-sm text-gray-600">{SITE_CONFIG.supportTel}</p>
                     </div>
                   </div>
                   
@@ -329,7 +330,7 @@ export default function ShopSidebar({
                     <MapPin size={16} className="text-gray-600 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-gray-800">Adresse</p>
-                      <p className="text-sm text-gray-600">Campus Universitaire<br />Bâtiment Principal, RDC</p>
+                      <p className="text-sm text-gray-600">Eyang, Cameroun</p>
                     </div>
                   </div>
                   
@@ -337,7 +338,7 @@ export default function ShopSidebar({
                     <Clock size={16} className="text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-800">Service client</p>
-                      <p className="text-sm text-gray-600">Lun-Ven: 8h-17h</p>
+                      <p className="text-sm text-gray-600">Lun-Sam: 8h-18h</p>
                     </div>
                   </div>
                 </div>

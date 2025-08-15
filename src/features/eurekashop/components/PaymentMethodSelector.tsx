@@ -7,35 +7,35 @@ interface IPaymentMethodSelectorProps {
 }
 
 export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMethodSelectorProps) {
-    /*************** STATES ****************/
+    // =============== LOCAL STATES ===============
 
-    const [selectedMethod, setSelectedMethod] = useState('');
+    const [selectedMethod, setSelectedMethod] = useState('cash');
     const [phoneNumber, setPhoneNumber] = useState('');
 
     
-    /*************** DATA ****************/
+    // =============== DATA ===============
     
     const paymentMethods: IPaymentMethod[] = [
-        {
-            id: 'orange_money',
-            name: 'Orange Money',
-            description: 'Paiement via Orange Money',
-            icon: '📱',
-            color: 'from-orange-500 to-orange-600',
-            bgColor: 'bg-orange-50 border-orange-200',
-            selectedBg: 'bg-orange-100 border-orange-500',
-            prefix: '+237 6'
-        },
-        {
-            id: 'mtn_money',
-            name: 'MTN Mobile Money',
-            description: 'Paiement via MTN MoMo',
-            icon: '📱',
-            color: 'from-yellow-500 to-yellow-600',
-            bgColor: 'bg-yellow-50 border-yellow-200',
-            selectedBg: 'bg-yellow-100 border-yellow-500',
-            prefix: '+237 6'
-        },
+        // {
+        //     id: 'orange_money',
+        //     name: 'Orange Money',
+        //     description: 'Paiement via Orange Money',
+        //     icon: '📱',
+        //     color: 'from-orange-500 to-orange-600',
+        //     bgColor: 'bg-orange-50 border-orange-200',
+        //     selectedBg: 'bg-orange-100 border-orange-500',
+        //     prefix: '+237 6'
+        // },
+        // {
+        //     id: 'mtn_money',
+        //     name: 'MTN Mobile Money',
+        //     description: 'Paiement via MTN MoMo',
+        //     icon: '📱',
+        //     color: 'from-yellow-500 to-yellow-600',
+        //     bgColor: 'bg-yellow-50 border-yellow-200',
+        //     selectedBg: 'bg-yellow-100 border-yellow-500',
+        //     prefix: '+237 6'
+        // },
         {
             id: 'cash',
             name: 'En espèce',
@@ -51,7 +51,7 @@ export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMetho
     const selectedMethodData = paymentMethods.find(m => m.id === selectedMethod);
     const requiresPhone = selectedMethod && selectedMethod !== 'cash';
 
-    /*************** HANDLERS ****************/
+    // =============== HANDLERS ===============
 
     const handleMethodSelect = (method : IPaymentMethod) => {
         setSelectedMethod(method.id);
@@ -63,7 +63,7 @@ export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMetho
     };
 
     const handlePhoneChange = (value: string) => {
-        // Nettoyage du numéro (garder seulement les chiffres)
+        // Cleaning the number (keep only the digits)
         const cleanNumber = value.replace(/\D/g, '');
         setPhoneNumber(cleanNumber);
 
@@ -75,17 +75,17 @@ export default function PaymentMethodSelector({ onPaymentChange }: IPaymentMetho
     };
 
     const formatPhoneDisplay = (number: string) => {
-    // Formatage pour l'affichage (ajouter des espaces)
-    return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4');
+        // Formatting for displaying phone number with spaces
+        return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4');
     };
 
-    /*************** RENDER ****************/
+    // =============== RENDER ===============
 
     return (
     <>
         <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-2 dark:text-gray-100">Méthode de paiement</h2>
-            <p className="text-gray-600">Choisissez votre mode de paiement préféré</p>
+            <p className="text-gray-600 dark:text-gray-400">Choisissez votre mode de paiement préféré</p>
         </div>
 
         {/* Payment Options */}

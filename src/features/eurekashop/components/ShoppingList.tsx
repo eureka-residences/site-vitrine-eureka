@@ -193,7 +193,7 @@ export default function ShoppingList() {
                         Vider la liste
                     </button>
                         <Link
-                            to={`/boutique/payment-process/12ZDA3FD`}
+                            to={`/boutique/paiement`}
                             onClick={() => {
                             // alert('Fonctionnalité de commande à implémenter !');
                             setIsOpen(false);

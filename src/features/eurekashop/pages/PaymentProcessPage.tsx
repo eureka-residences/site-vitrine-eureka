@@ -25,7 +25,7 @@ export default function PaymentProcessPage() {
     const shoppingList = Object.keys(selectedProducts).map((key: string) => STATIC_PRODUCTS_MAP[key]);
 
     // Total price
-    const totalPrice = shoppingList.reduce((accTotal: number, currProd: IProduct) => accTotal + currProd.price * selectedProducts[currProd.id], /* initialValue= */0);
+    const productTotalPrice = shoppingList.reduce((accTotal: number, currProd: IProduct) => accTotal + currProd.price * selectedProducts[currProd.id], /* initialValue= */0);
     
     
     // =============== LOCAL STATES ===============
@@ -101,12 +101,12 @@ export default function PaymentProcessPage() {
                         {/* Left section */}
                         <div className="lg:col-span-2 flex flex-col gap-6">
                             {/* Payment information */}
-                            <div className='p-6 bg-white dark:bg-gray-800  rounded-lg'>
+                            <div className='p-6 bg-gray-25 dark:bg-gray-800 shadow-md rounded-lg'>
                                 <PaymentMethodSelector />
                             </div>
                             
                             {/* Form */}
-                            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                            <div className="bg-gray-25 dark:bg-gray-800 rounded-lg shadow-md p-6">
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
                                     <label htmlFor="studentName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -238,7 +238,7 @@ export default function PaymentProcessPage() {
                                             <Minus size={16} className="text-gray-600" />
                                             </button>
                                             
-                                            <span className="w-8 text-center text-sm font-medium">{selectedProducts[item.id]}</span>
+                                            <span className="w-8 text-center text-sm font-medium text-gray-600 dark:text-gray-400">{selectedProducts[item.id]}</span>
                                             
                                             <button
                                             onClick={() => updateProductQuantity(item.id, selectedProducts[item.id] + 1)}
@@ -260,13 +260,13 @@ export default function PaymentProcessPage() {
 
                                 <div className='p-6'>
                                     <div className='space-y-6'>
-                                        <div className='flex justify-between border-t border-gray-100 dark:border-gray-700 pt-4'>
+                                        <div className='flex justify-between border-t border-gray-100 dark:border-gray-700 pt-4 text-gray-900 dark:text-gray-400'>
                                             <span>Prix des articles</span>
 
-                                            <span>{totalPrice} F.CFA</span>
+                                            <span>{productTotalPrice} F.CFA</span>
                                         </div>
 
-                                        <div className='flex justify-between'>
+                                        <div className='flex justify-between text-gray-900 dark:text-gray-400'>
                                             <span>Prix de la livraison</span>
 
                                             <span>6500 F.CFA</span>
@@ -276,7 +276,7 @@ export default function PaymentProcessPage() {
                                             <div className='flex justify-between'>
                                             <span className="text-xl font-semibold text-gray-800 dark:text-white">Prix total</span>
 
-                                            <span className="text-xl font-semibold text-gray-800 dark:text-white">13000 F.CFA</span>
+                                            <span className="text-xl font-semibold text-gray-800 dark:text-white">{productTotalPrice === 0 ? 0 : productTotalPrice + 6500} F.CFA</span>
                                         </div>
                                         </div>
                                     </div>

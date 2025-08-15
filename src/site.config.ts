@@ -6,12 +6,12 @@ export const endBookingPeriod = import.meta.env.ERK_END_BOOKING_PERIOD;
 
 export const contacts = {
     /* telephone number for visitors to contact */
-    supportTel: import.meta.env.ERK_SUPPORT_TEL,
+    supportTel: '+237 6 90 19 14 04',
 
     /* email for visitors to contact */
-    supportMailInfo: import.meta.env.ERK_MAIL_INFO,
+    supportMailInfo: 'info@eureka-residences.com',
     
-    supportMailContact: import.meta.env.ERK_MAIL_CONTACT
+    supportMailContact: 'contact@eureka-residences.com'
 };
 
 export const links = {
@@ -211,6 +211,12 @@ export const residenceData = {
                                             zetaBlock,
         thetaBlock, eurekaBlock, kappaBlock, phiBlock, 
     ],
+};
+
+export const ERK_FEATURE_FLAGS = {
+    eurekashop : true,
+    eurekanet : true,
+    booking : true
 };
 
 const SITE_CONFIG = { ...contacts, links, ...residenceData };

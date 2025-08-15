@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, ChevronDown, Home, Building, Coffee, CalendarCheck, ClipboardList, Phone, Info, ChevronRight, UserRound } from 'lucide-react';
+import { Menu, ChevronDown, Home, CalendarCheck, Phone, ChevronRight, UserRound } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
 import logoImage from '@images/logo-eureka-97x160.png';
+import { ERK_FEATURE_FLAGS } from '@site-config';
 
 // Images pour les menus
 const residenceImage = "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
@@ -10,150 +11,157 @@ const servicesImage = "https://images.unsplash.com/photo-1600585154340-be6161a56
 const reservationImage = "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
 
 interface NavItemProps {
-  to: string;
-  label: string;
-  icon?: React.ReactNode;
-  image?: string;
-  children?: {
     to: string;
     label: string;
-    description?: string;
-    subItems?: {
-      to: string;
-      label: string;
+    icon?: React.ReactNode;
+    image?: string;
+    children?: {
+        to: string;
+        label: string;
+        description?: string;
+        subItems?: {
+            to: string;
+            label: string;
+        }[];
     }[];
-  }[];
 }
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const location = useLocation();
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+    const isActive = (path: string) => {
+        return location.pathname === path;
+    };
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setActiveDropdown(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    // Close mobile menu when navigating
+    useEffect(() => {
+        setIsOpen(false);
         setActiveDropdown(null);
-      }
-    };
+    }, [location]);
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+    const navItems: NavItemProps[] = [
+        {
+            to: '/',
+            label: 'Accueil',
+            icon: <Home size={18} />
+        },
+        // {
+        //   to: '/residences',
+        //   label: 'Résidences',
+        //   icon: <Building size={18} />,
+        //   image: residenceImage,
+            // children: [
+            //   {
+            //     to: '/residences/residence-eureka',
+            //     label: 'Résidence Eureka',
+            //     description: 'Notre résidence principale située au cœur du campus',
+            //     subItems: [
+            //       { to: '/residences/residence-eureka/chambre-standard', label: 'Chambre Standard' },
+            //       { to: '/residences/residence-eureka/chambre-confort', label: 'Chambre Confort' },
+            //       { to: '/residences/residence-eureka/studio', label: 'Studio' }
+            //     ]
+            //   },
+            //   {
+            //     to: '/residences/residence-alpha',
+            //     label: 'Résidence Alpha',
+            //     description: 'Moderne et confortable, proche du centre-ville',
+            //     subItems: [
+            //       { to: '/residences/residence-alpha/chambre-standard', label: 'Chambre Standard' },
+            //       { to: '/residences/residence-alpha/studio', label: 'Studio' },
+            //     ]
+            //   },
+            //   {
+            //     to: '/residences/residence-beta',
+            //     label: 'Résidence Beta',
+            //     description: 'Chambres économiques pour les petits budgets',
+            //     subItems: [
+            //       { to: '/residences/residence-beta/chambre-economique', label: 'Chambre Économique' },
+            //       { to: '/residences/residence-beta/chambre-partagee', label: 'Chambre Partagée' },
+            //     ]
+            //   }
+            // ]
+        // },
+        {
+            label: 'Logements',
+            to: '/logements',
+            icon: <Home size={18} />, // Importez l'icône appropriée en haut du fichier si nécessaire
+        },
 
-  // Close mobile menu when navigating
-  useEffect(() => {
-    setIsOpen(false);
-    setActiveDropdown(null);
-  }, [location]);
 
-  const navItems: NavItemProps[] = [
-    {
-      to: '/',
-      label: 'Accueil',
-      icon: <Home size={18} />
-    },
-    // {
-    //   to: '/residences',
-    //   label: 'Résidences',
-    //   icon: <Building size={18} />,
-    //   image: residenceImage,
-      // children: [
-      //   {
-      //     to: '/residences/residence-eureka',
-      //     label: 'Résidence Eureka',
-      //     description: 'Notre résidence principale située au cœur du campus',
-      //     subItems: [
-      //       { to: '/residences/residence-eureka/chambre-standard', label: 'Chambre Standard' },
-      //       { to: '/residences/residence-eureka/chambre-confort', label: 'Chambre Confort' },
-      //       { to: '/residences/residence-eureka/studio', label: 'Studio' }
-      //     ]
-      //   },
-      //   {
-      //     to: '/residences/residence-alpha',
-      //     label: 'Résidence Alpha',
-      //     description: 'Moderne et confortable, proche du centre-ville',
-      //     subItems: [
-      //       { to: '/residences/residence-alpha/chambre-standard', label: 'Chambre Standard' },
-      //       { to: '/residences/residence-alpha/studio', label: 'Studio' },
-      //     ]
-      //   },
-      //   {
-      //     to: '/residences/residence-beta',
-      //     label: 'Résidence Beta',
-      //     description: 'Chambres économiques pour les petits budgets',
-      //     subItems: [
-      //       { to: '/residences/residence-beta/chambre-economique', label: 'Chambre Économique' },
-      //       { to: '/residences/residence-beta/chambre-partagee', label: 'Chambre Partagée' },
-      //     ]
-      //   }
-      // ]
-    // },
-    {
-      label: 'Logements',
-      to: '/logements',
-      icon: <Home size={18} />, // Importez l'icône appropriée en haut du fichier si nécessaire
-    },
+        // {
+        //   to: '/services',
+        //   label: 'Services',
+        //   icon: <Coffee size={18} />,
+        //   image: servicesImage,
+        //   children: [
+        //     {
+        //       to: '/services/restauration',
+        //       label: 'Restauration',
+        //       description: 'Découvrez notre service de restauration sur place',
+        //       subItems: [
+        //         { to: '/services/restauration/cafeteria', label: 'Cafétéria' },
+        //         { to: '/services/restauration/restaurant', label: 'Restaurant' }
+        //       ]
+        //     },
+        //     {
+        //       to: '/services/salles-etudes',
+        //       label: 'Espaces d\'étude',
+        //       description: 'Espaces de travail calmes et équipés',
+        //       subItems: [
+        //         { to: '/services/salles-etudes/bibliotheque', label: 'Bibliothèque' },
+        //         { to: '/services/salles-etudes/salles-travail', label: 'Salles de travail' },
+        //         { to: '/services/salles-etudes/espace-coworking', label: 'Espace coworking' }
+        //       ]
+        //     },
+        //     {
+        //       to: '/services/loisirs',
+        //       label: 'Loisirs',
+        //       description: 'Activités et divertissements proposés',
+        //       subItems: [
+        //         { to: '/services/loisirs/salle-sport', label: 'Salle de sport' },
+        //         { to: '/services/loisirs/espace-detente', label: 'Espace détente' },
+        //         { to: '/services/loisirs/activites', label: 'Activités organisées' }
+        //       ]
+        //     }
+        //   ]
+        // },
+        {
+            to: '/contact',
+            label: 'Contact',
+            icon: <Phone size={18} />
+        }
+    ];
 
-    
-    // {
-    //   to: '/services',
-    //   label: 'Services',
-    //   icon: <Coffee size={18} />,
-    //   image: servicesImage,
-    //   children: [
-    //     {
-    //       to: '/services/restauration',
-    //       label: 'Restauration',
-    //       description: 'Découvrez notre service de restauration sur place',
-    //       subItems: [
-    //         { to: '/services/restauration/cafeteria', label: 'Cafétéria' },
-    //         { to: '/services/restauration/restaurant', label: 'Restaurant' }
-    //       ]
-    //     },
-    //     {
-    //       to: '/services/salles-etudes',
-    //       label: 'Espaces d\'étude',
-    //       description: 'Espaces de travail calmes et équipés',
-    //       subItems: [
-    //         { to: '/services/salles-etudes/bibliotheque', label: 'Bibliothèque' },
-    //         { to: '/services/salles-etudes/salles-travail', label: 'Salles de travail' },
-    //         { to: '/services/salles-etudes/espace-coworking', label: 'Espace coworking' }
-    //       ]
-    //     },
-    //     {
-    //       to: '/services/loisirs',
-    //       label: 'Loisirs',
-    //       description: 'Activités et divertissements proposés',
-    //       subItems: [
-    //         { to: '/services/loisirs/salle-sport', label: 'Salle de sport' },
-    //         { to: '/services/loisirs/espace-detente', label: 'Espace détente' },
-    //         { to: '/services/loisirs/activites', label: 'Activités organisées' }
-    //       ]
-    //     }
-    //   ]
-    // },
-    // {
-    //   to: '/boutique',
-    //   label: 'Boutique',
-    // },
-    {
-      to: '/contact',
-      label: 'Contact',
-      icon: <Phone size={18} />
+    // If EurekaShop feature enable
+    if (ERK_FEATURE_FLAGS.eurekashop) {
+        navItems.splice(navItems.length - 1, 0, {
+            to: '/boutique',
+            label: 'Boutique',
+        });
     }
-  ];
 
- // Pour la partie NavLink du composant
-  const NavLink = ({ item }: { item: NavItemProps }) => {
+
+
+    // Pour la partie NavLink du composant
+    const NavLink = ({ item }: { item: NavItemProps }) => {
     const hasChildren = item.children && item.children.length > 0;
     
     return (
@@ -396,20 +404,27 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <NavLink key={index} item={item} />
             ))}
-            {/* <Link
-              to='/login'
-              className='rounded-lg p-2 hover:bg-gray-200 hover:dark:bg-gray-700'
-            >
-              <UserRound className='text-gray-600 dark:text-gray-200' />
-            </Link> */}
+            
+            {ERK_FEATURE_FLAGS.eurekanet && (
+                <Link
+                    to='/login'
+                    className='rounded-lg p-2 hover:bg-gray-200 hover:dark:bg-gray-700'
+                >
+                    <UserRound className='text-gray-600 dark:text-gray-200' />
+                </Link>
+            )}
+
             <ThemeToggle />
-            <Link
-              to="/reservation"
-              className="bg-[#F7BF57] text-white px-4 py-2 rounded-md hover:bg-[#D9BEA3] transition-colors flex items-center gap-2"
-            >
-              <CalendarCheck size={18} />
-              <span>Réserver</span>
-            </Link>
+
+            {ERK_FEATURE_FLAGS.booking && (
+                <Link
+                    to="/reservation"
+                    className="bg-[#F7BF57] text-white px-4 py-2 rounded-md hover:bg-[#D9BEA3] transition-colors flex items-center gap-2"
+                >
+                    <CalendarCheck size={18} />
+                    <span>Réserver</span>
+                </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}

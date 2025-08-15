@@ -39,7 +39,7 @@ function App() {
             {/* EurekaShop routes */}
             <Route element={<ERKShopLayout />}>
                 <Route path="/boutique" element={<ShopPage />} />
-                <Route path="/boutique/payment-process/:id" element={<PaymentProcessPage />} />
+                <Route path="/boutique/paiement" element={<PaymentProcessPage />} />
             </Route>
 
 

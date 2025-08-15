@@ -10,6 +10,7 @@ import type { Testimonial } from '../types';
 import room2 from '../assets/images/room2.jpeg';
 
 import SITE_CONFIG from '@site-config';
+import { ERK_FEATURE_FLAGS } from '@site-config';
 
 
 const testimonials: Testimonial[] = [
@@ -64,19 +65,21 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
           <div className="max-w-2xl text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Residences Eureka
+              Résidences Eureka
             </h1>
             <p className="text-xl text-white/90 mb-8">
               Des logements modernes, confortables et adaptés à la vie étudiante
             </p>
             <div className="flex justify-center">
-              <Link
-                to="/reservation"
-                className="bg-[#F7BF57] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-[#D9BEA3] transition-colors flex items-center gap-2"
-              >
-                Réserver maintenant
-                <ArrowRight size={20} />
-              </Link>
+            {ERK_FEATURE_FLAGS.booking && (
+                <Link
+                    to="/reservation"
+                    className="bg-[#F7BF57] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-[#D9BEA3] transition-colors flex items-center gap-2"
+                >
+                    Réserver maintenant
+                    <ArrowRight size={20} />
+                </Link>
+            )}
             </div>
           </div>
         </div>
@@ -101,7 +104,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                A propos de la résidence 
+                À propos de la résidence 
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 Profitez d'espaces modernes,
@@ -340,24 +343,26 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Prêt à rejoindre la communauté Eureka ?
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Réservez dès maintenant votre logement étudiant et bénéficiez
-            d'un environnement optimal pour réussir vos études.
-          </p>
-          <Link
-            to="/reservation"
-            className="bg-[#F7BF57] text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-[#D9BEA3] transition-colors inline-flex items-center gap-2"
-          >
-            Commencer ma réservation
-            <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
+      {ERK_FEATURE_FLAGS.booking && (
+        <section className="py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Prêt à rejoindre la communauté Eureka ?
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                Réservez dès maintenant votre logement étudiant et bénéficiez
+                d'un environnement optimal pour réussir vos études.
+            </p>
+            <Link
+                to="/reservation"
+                className="bg-[#F7BF57] text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-[#D9BEA3] transition-colors inline-flex items-center gap-2"
+            >
+                Commencer ma réservation
+                <ArrowRight size={20} />
+            </Link>
+            </div>
+        </section>
+        )}
     </div>
   );
 }

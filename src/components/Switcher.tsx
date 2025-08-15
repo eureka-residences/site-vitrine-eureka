@@ -29,7 +29,7 @@ const Switcher = ({
                 />
                 <div
                     className={`box block h-8 w-14 rounded-full ${
-                        bChecked ? 'bg-[#F7BF57]' : 'bg-white dark:bg-gray-700'
+                        bChecked ? 'bg-[#F7BF57]' : 'bg-gray-300 dark:bg-gray-700'
                     }`}
                 ></div>
                 <div
